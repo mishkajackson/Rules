@@ -1,0 +1,19 @@
+payload:
+  - DOMAIN-SUFFIX,cloudflare-ech.com
+  - DOMAIN-SUFFIX,flibusta.su
+  - DOMAIN-SUFFIX,aws.amazon.com
+  - DOMAIN-SUFFIX,zerolab.net
+  - DOMAIN-SUFFIX,rentry.co
+  - DOMAIN-SUFFIX,amnezia.org
+  - DOMAIN-SUFFIX,facebook.com
+  - DOMAIN-SUFFIX,meduza.io
+  - DOMAIN-SUFFIX,4pda.to
+  - DOMAIN-SUFFIX,dtf.ru
+  - DOMAIN-SUFFIX,ua
+  - DOMAIN-SUFFIX,habr.com
+  - DOMAIN-SUFFIX,medium.com
+  - DOMAIN-SUFFIX,rublacklist.net
+  - DOMAIN-SUFFIX,ntc.party
+  - DOMAIN-SUFFIX,miracleptr.wordpress.com
+  - DOMAIN-SUFFIX,itdog.info
+  - DOMAIN-SUFFIX,speedtest.net
