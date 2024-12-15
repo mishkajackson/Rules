@@ -1,0 +1,26 @@
+{
+    "version": 1,
+    "rules": [
+        {
+            "domain_suffix": [
+                "openai.com",
+                "chatgpt.com",
+                "bard.google.com",
+                "gemini.google.com",
+                "makersuite.google.com",
+                "generativelanguage.googleapis.com",
+                "alkalimakersuite-pa.clients6.google.com",
+                "claude.ai",
+                "anthropic.com",
+                "hsforms.net",
+                "grazie.aws.intellij.net",
+                "grazie.ai",
+                "x.ai",
+                "use.typekit.net"
+            ],
+            "domain_keyword": [
+                "openai"
+            ]
+        }
+    ]
+}
