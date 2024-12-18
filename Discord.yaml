@@ -1,4 +1,5 @@
 payload:
+  - PROCESS-NAME,Discord.exe
   - DOMAIN-KEYWORD,discord
   - DOMAIN-SUFFIX,airhorn.solutions
   - DOMAIN-SUFFIX,airhornbot.com
