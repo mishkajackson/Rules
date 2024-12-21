@@ -1,5 +1,6 @@
 payload:
   - DOMAIN-SUFFIX,ficbook.net
+  - DOMAIN-SUFFIX,ficbook.com
   - DOMAIN-SUFFIX,ficbook.fandom.com
   - IP-CIDR,172.67.17.216/32
   - IP-CIDR,104.20.38.242/32
