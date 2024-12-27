@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "rules": [
+        {
+            "domain_keyword": [
+                "rutracker",
+                "rutor"
+            ],
+            "domain_suffix": [
+                "thepiratebay.org"
+            ]
+        }
+    ]
+}
