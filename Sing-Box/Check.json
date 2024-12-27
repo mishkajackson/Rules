@@ -1,0 +1,16 @@
+{
+    "version": 1,
+    "rules": [
+        {
+            "domain_suffix": [
+                "whoer.net",
+                "myip.com",
+                "check-host.net",
+                "ipleak.net",
+                "browserleaks.com",
+                "dnsleaktest.com",
+                "ripe.net"
+            ]
+        }
+    ]
+}
