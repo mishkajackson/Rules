@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "rules": [
+        {
+            "domain_keyword": [],
+            "domain_suffix": [
+                "i.ytimg.com",
+                "ytimg.com",
+                "googlevideo.com",
+                "youtube.com",
+                "ggpht.com",
+                "youtubei.googleapis.com",
+                "youtu.be",
+                "nhacmp3youtube.com",
+                "googleusercontent.com",
+                "youtubetoken-pa.googleapis.com",
+                "nhacmp3youtube.com",
+                "youtube-nocookie.com"
+            ]
+        }
+    ]
+}
