@@ -1,0 +1,16 @@
+{
+    "version": 1,
+    "rules": [
+        {
+            "domain_suffix": [
+                "kino.pub",
+                "kpapp.link",
+                "kpappn.link",
+                "xbdfgdf.link",
+                "kinopub.online",
+                "mos-gorsud.net",
+                "cdntogo.net"
+            ]
+        }
+    ]
+}
