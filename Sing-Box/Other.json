@@ -3,7 +3,9 @@
     "rules": [
         {
             "domain_keyword": [
-                "adguard"
+                "adguard",
+                "rutracker",
+                "rutor"
             ],
             "domain_suffix": [
                 "cloudflare-ech.com",
