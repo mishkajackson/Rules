@@ -1,0 +1,32 @@
+{
+    "version": 1,
+    "rules": [
+        {
+            "domain_keyword": [
+                "adguard"
+            ],
+            "domain_suffix": [
+                "cloudflare-ech.com",
+                "flibusta.su",
+                "ficbook.net",
+                "ficbook.fandom.com",
+                "aws.amazon.com",
+                "zerolab.net",
+                "rentry.co",
+                "amnezia.org",
+                "facebook.com",
+                "meduza.io",
+                "4pda.to",
+                "dtf.ru",
+                "ua",
+                "habr.com",
+                "medium.com",
+                "rublacklist.net",
+                "ntc.party",
+                "miracleptr.wordpress.com",
+                "itdog.info",
+                "speedtest.net"
+            ]
+        }
+    ]
+}
