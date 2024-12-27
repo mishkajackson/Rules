@@ -2,7 +2,6 @@
     "version": 1,
     "rules": [
         {
-            "domain_keyword": [],
             "domain_suffix": [
                 "i.ytimg.com",
                 "ytimg.com",
