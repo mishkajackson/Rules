@@ -40,12 +40,17 @@ jobs:
             echo "Skipping $file for geosite"
             continue
           fi
+
           category=$(basename "$file" .yaml)
           echo "geosite:" > "geosite_input/${category}.yaml"
           echo "  - category: \"$category\"" >> "geosite_input/${category}.yaml"
           echo "    domains:" >> "geosite_input/${category}.yaml"
-          yq '.payload[] | select(. | startswith("DOMAIN-SUFFIX,")) | "      - \"" + .split(",")[1] + "\"" ' "$file" >> "geosite_input/${category}.yaml"
-          yq '.payload[] | select(. | startswith("DOMAIN-KEYWORD,")) | "      - \"" + .split(",")[1] + "\"" ' "$file" >> "geosite_input/${category}.yaml"
+
+          yq '.payload[] | select(. | test("^DOMAIN-SUFFIX,")) | "      - \"" + split(",")[1] + "\"" ' "$file" \
+            >> "geosite_input/${category}.yaml"
+
+          yq '.payload[] | select(. | test("^DOMAIN-KEYWORD,")) | "      - \"" + split(",")[1] + "\"" ' "$file" \
+            >> "geosite_input/${category}.yaml"
         done
 
     - name: Generate geosite.dat
@@ -59,7 +64,8 @@ jobs:
         echo "geoip:" > geoip_input/discord_voice.yaml
         echo "  - country-code: \"DISCORD_VOICE\"" >> geoip_input/discord_voice.yaml
         echo "    ip-cidrs:" >> geoip_input/discord_voice.yaml
-        yq '.payload[] | select(. | startswith("IP-CIDR,")) | "      - \"" + .split(",")[1] + "\"" ' Discord_Voice.yaml >> geoip_input/discord_voice.yaml
+        yq '.payload[] | select(. | test("^IP-CIDR,")) | "      - \"" + split(",")[1] + "\"" ' Discord_Voice.yaml \
+          >> geoip_input/discord_voice.yaml
 
     - name: Generate geoip.dat
       run: |
