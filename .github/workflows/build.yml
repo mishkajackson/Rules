@@ -22,7 +22,6 @@ jobs:
     - name: Install yq
       run: |
         sudo apt-get update
-        sudo apt-get install -y jq
         sudo wget -O /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v4.35.2/yq_linux_amd64
         sudo chmod +x /usr/local/bin/yq
 
@@ -40,18 +39,15 @@ jobs:
             echo "Skipping $file for geosite"
             continue
           fi
-
           category=$(basename "$file" .yaml)
           echo "geosite:" > "geosite_input/${category}.yaml"
           echo "  - category: \"$category\"" >> "geosite_input/${category}.yaml"
           echo "    domains:" >> "geosite_input/${category}.yaml"
 
-          # Для DOMAIN-SUFFIX
-          yq '.payload[] | select(type == "!!str") | select(. | test("^DOMAIN-SUFFIX,")) | "      - \"" + .split(",")[1] + "\"" ' "$file" \
+          yq eval '.payload[] | select(type == "!!str") | select(. | test("^DOMAIN-SUFFIX,")) | "      - \"" + split(",")[1] + "\"" ' "$file" \
             >> "geosite_input/${category}.yaml"
 
-          # Для DOMAIN-KEYWORD
-          yq '.payload[] | select(type == "!!str") | select(. | test("^DOMAIN-KEYWORD,")) | "      - \"" + .split(",")[1] + "\"" ' "$file" \
+          yq eval '.payload[] | select(type == "!!str") | select(. | test("^DOMAIN-KEYWORD,")) | "      - \"" + split(",")[1] + "\"" ' "$file" \
             >> "geosite_input/${category}.yaml"
         done
 
@@ -66,7 +62,7 @@ jobs:
         echo "geoip:" > geoip_input/discord_voice.yaml
         echo "  - country-code: \"DISCORD_VOICE\"" >> geoip_input/discord_voice.yaml
         echo "    ip-cidrs:" >> geoip_input/discord_voice.yaml
-        yq '.payload[] | select(type == "!!str") | select(. | test("^IP-CIDR,")) | "      - \"" + .split(",")[1] + "\"" ' Discord_Voice.yaml \
+        yq eval '.payload[] | select(type == "!!str") | select(. | test("^IP-CIDR,")) | "      - \"" + split(",")[1] + "\"" ' Discord_Voice.yaml \
           >> geoip_input/discord_voice.yaml
 
     - name: Generate geoip.dat
