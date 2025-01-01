@@ -46,10 +46,12 @@ jobs:
           echo "  - category: \"$category\"" >> "geosite_input/${category}.yaml"
           echo "    domains:" >> "geosite_input/${category}.yaml"
 
-          yq '.payload[] | select(. | test("^DOMAIN-SUFFIX,")) | "      - \"" + split(",")[1] + "\"" ' "$file" \
+          # Для DOMAIN-SUFFIX
+          yq '.payload[] | select(type == "!!str") | select(. | test("^DOMAIN-SUFFIX,")) | "      - \"" + .split(",")[1] + "\"" ' "$file" \
             >> "geosite_input/${category}.yaml"
 
-          yq '.payload[] | select(. | test("^DOMAIN-KEYWORD,")) | "      - \"" + split(",")[1] + "\"" ' "$file" \
+          # Для DOMAIN-KEYWORD
+          yq '.payload[] | select(type == "!!str") | select(. | test("^DOMAIN-KEYWORD,")) | "      - \"" + .split(",")[1] + "\"" ' "$file" \
             >> "geosite_input/${category}.yaml"
         done
 
@@ -64,7 +66,7 @@ jobs:
         echo "geoip:" > geoip_input/discord_voice.yaml
         echo "  - country-code: \"DISCORD_VOICE\"" >> geoip_input/discord_voice.yaml
         echo "    ip-cidrs:" >> geoip_input/discord_voice.yaml
-        yq '.payload[] | select(. | test("^IP-CIDR,")) | "      - \"" + split(",")[1] + "\"" ' Discord_Voice.yaml \
+        yq '.payload[] | select(type == "!!str") | select(. | test("^IP-CIDR,")) | "      - \"" + .split(",")[1] + "\"" ' Discord_Voice.yaml \
           >> geoip_input/discord_voice.yaml
 
     - name: Generate geoip.dat
