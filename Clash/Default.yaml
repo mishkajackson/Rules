@@ -59,7 +59,6 @@ proxy-groups:
   - name: YOUTUBE
     type: select
     include-all: true
-    url: 'http://youtube.com'
     proxies:
       - AUTO
       - DIRECT
@@ -68,7 +67,6 @@ proxy-groups:
   - name: DISCORD
     type: select
     include-all: true
-    url: 'http://discord.media'
     proxies:
       - AUTO
       - DIRECT
