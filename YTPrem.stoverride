@@ -1,31 +1,51 @@
 name: YouTube Premium
 desc: YouTube Ad Full Blocker with PIP Player for Stash
-icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/YouTube.png
+icon: https://github.com/Toperlock/Quantumult/raw/main/icon/Doraemon/Doraemon-1044.png
 
-rules:
-  - AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
-  - AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
-
-rewrite:
-  - ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad$ reject-200
-  - ^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads$ reject-200
-  - ^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking)$ reject-200
-  - ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext$ reject-200
-  - (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+)$ $1$2$3 302
-
-script:
-  - match: ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch)
-    type: response
-    require-body: true
-    max-size: -1
-    binary-body-mode: true
-    engine: {{{scriptExecutionEngine}}}
-    script-path: https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/refs/heads/release/scripts/rewrite.youtube.response.preview.js
-    arguments: '{"lyricLang":"{{{lyricLang}}}","captionLang":"{{{captionLang}}}","blockUpload":{{{blockUpload}}},"blockImmersive":{{{blockImmersive}}},"debug":{{{debug}}}}'
-
-mitm:
-  hostnames:
+http:
+  mitm:
+    - "-redirector*.googlevideo.com"
     - "*.googlevideo.com"
     - "www.youtube.com"
     - "s.youtube.com"
     - "youtubei.googleapis.com"
+
+  url-rewrite:
+# ======= 视频广告请求 ======= #
+    - >-
+      (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
+    - >-
+      ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad - reject-200
+# ======= 通用广告请求 ======= #
+    - >-
+      ^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads - reject-200
+    - >-
+      ^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) - reject-200
+    - >-
+      ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext - reject-200
+
+  script:
+# ======= 视频PIP|后台播放|瀑布流|搜索页|播放页|短视频|贴片广告  ======= #
+    - match: ^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch)
+      name: "youtube.request.preview_19"
+      type: request
+      require-body: true
+      max-size: -1
+      binary-mode: true
+      timeout: 60
+
+    - match: ^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch)
+      name: "youtube.response.preview_20"
+      type: response
+      require-body: true
+      max-size: -1
+      binary-mode: true
+      timeout: 60
+
+script-providers:
+  "youtube.request.preview_19":
+    url: https://raw.githubusercontent.com/Ender-Wang/YouTubeAds-PiP-BackgroundPlay/main/youtube.request.preview.js
+    interval: 86400
+  "youtube.response.preview_20":
+    url: https://raw.githubusercontent.com/Ender-Wang/YouTubeAds-PiP-BackgroundPlay/main/youtube.response.preview.js
+    interval: 86400
