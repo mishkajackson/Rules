@@ -1,0 +1,35 @@
+#!name=YouTube Premium
+#!desc=YouTube Ad Full Blocker with PIP Player for Stash
+#!arguments=blockUpload:true,blockImmersive:true,captionLang:off,lyricLang:ru-ru,scriptExecutionEngine:auto,debug:false
+# Origin Author: @DivineEngine, @app2smile, @Maasea, @VirgilClyne
+# Other hints: @Choler, @bai1zi
+# Merged and released by @ddgksf2013 in form of qx
+# Translated and refined for Stash by @deezertidal
+
+rules:
+  - AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
+  - AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
+
+rewrite:
+  - ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad$ reject-200
+  - ^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads$ reject-200
+  - ^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking)$ reject-200
+  - ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext$ reject-200
+  - (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+)$ $1$2$3 302
+
+script:
+  - match: ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch)
+    type: response
+    require-body: true
+    max-size: -1
+    binary-body-mode: true
+    engine: {{{scriptExecutionEngine}}}
+    script-path: https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/refs/heads/release/scripts/rewrite.youtube.response.preview.js
+    arguments: '{"lyricLang":"{{{lyricLang}}}","captionLang":"{{{captionLang}}}","blockUpload":{{{blockUpload}}},"blockImmersive":{{{blockImmersive}}},"debug":{{{debug}}}}'
+
+mitm:
+  hostnames:
+    - "*.googlevideo.com"
+    - "www.youtube.com"
+    - "s.youtube.com"
+    - "youtubei.googleapis.com"
