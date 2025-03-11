@@ -15,10 +15,7 @@ script:
     require-body: true
     binary-mode: true
     timeout: 10
-    script-providers:
-      YouTube_Response:
-        url: https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/refs/heads/release/scripts/rewrite.youtube.response.preview.js
-        interval: 8400
+    script-path: YouTube_Response
 
 rewrite:
   - (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
@@ -26,3 +23,8 @@ rewrite:
   - ^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads - reject-200
   - ^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) - reject-200
   - ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext - reject-200
+
+script-providers:
+  YouTube_Response:
+    url: https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/refs/heads/release/scripts/rewrite.youtube.response.preview.js
+    interval: 8400
