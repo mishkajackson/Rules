@@ -1,7 +1,10 @@
-name: "YouTube Premium"
-desc: "Блокировка рекламы, поддержка PiP и фонового воспроизведения"
-category: Scripts
-icon = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+#!name = YouTube去广告
+#!desc =支持pip，后台播放
+#!author = Maasea 
+#!homepage=https://whatshub.top
+#!icon = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+name: YouTubequguanggao
+desc: 支持pip，后台播放
 http:
   mitm:
     - "-redirector*.googlevideo.com"
