@@ -1,6 +1,7 @@
 category: Tiles
 name: "Get IP"
 icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png"
+desc: "Отображает ваш текущий IP-адрес, город и пинг до Cloudflare."
 
 tiles:
   - name: "my-ip"
