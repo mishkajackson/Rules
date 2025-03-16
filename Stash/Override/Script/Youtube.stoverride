@@ -1,6 +1,6 @@
-name: YouTube
-category: Scripts
-desc: AdBlock,PiP
+name: YouTube Premium
+desc: Блокировка рекламы, поддержка PiP, фонового воспроизведения
+icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
 http:
   mitm:
     - "-redirector*.googlevideo.com"
