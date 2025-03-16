@@ -3,19 +3,40 @@ $httpClient.get('https://ipapi.co/json/', function (error, response, data) {
     $done({ title: 'IP', content: 'Error fetching data', backgroundColor: '#ff0000' });
   } else {
     let info = JSON.parse(data);
-    
+
     // Выполняем ping до Cloudflare
     let startTime = Date.now();
     $httpClient.get('https://1.1.1.1/cdn-cgi/trace', function (pingError, pingResponse, pingData) {
       let pingTime = pingError ? 'N/A' : (Date.now() - startTime) + ' ms';
+
+      // Проверяем доступность сайтов
+      let sites = {
+        'YouTube': 'https://www.youtube.com',
+        'Instagram': 'https://www.instagram.com',
+        'OpenAI': 'https://openai.com'
+      };
       
-      let content = `${info.ip}\n${info.city}\n${info.org}\n${pingTime}`;
-      
-      $done({
-        title: 'Информация',
-        content: content,
-        backgroundColor: '#696aad',
-        icon: 'network',
+      let statuses = [];
+      let checked = 0;
+
+      Object.keys(sites).forEach(site => {
+        $httpClient.get(sites[site], function (siteError) {
+          let status = siteError ? '❌' : '✅';
+          statuses.push(`${site}: ${status}`);
+          checked++;
+
+          // Когда все сайты проверены, формируем контент и завершаем выполнение
+          if (checked === Object.keys(sites).length) {
+            let content = `${info.ip}\n${info.city}\n${info.org}\nPing: ${pingTime}\n\n` + statuses.join('\n');
+            
+            $done({
+              title: 'Информация',
+              content: content,
+              backgroundColor: '#696aad',
+              icon: 'network',
+            });
+          }
+        });
       });
     });
   }
