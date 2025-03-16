@@ -1,10 +1,7 @@
-#!name = YouTube去广告
-#!desc =支持pip，后台播放
-#!author = Maasea 
-#!homepage=https://whatshub.top
-#!icon = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
-name: YouTubequguanggao
-desc: 支持pip，后台播放
+icon = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+name: YouTube
+category: Scripts
+desc: AdBlock,PiP
 http:
   mitm:
     - "-redirector*.googlevideo.com"
@@ -27,5 +24,5 @@ http:
     - ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext - reject-200
 script-providers:
   YouTubequguanggao1:
-    url: https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/youtube.response.js
+    url: https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/refs/heads/release/scripts/rewrite.youtube.response.preview.js
     interval: 86400
