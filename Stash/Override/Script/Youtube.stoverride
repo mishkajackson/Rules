@@ -1,7 +1,7 @@
 name: YouTube_Premium
 desc: Блокировка рекламы YouTube, поддержка PiP и фонового воспроизведения
 category: Scripts
-icon: "https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/YouTube.png"
+icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png"
 
 http:
   mitm:
@@ -11,15 +11,19 @@ http:
     - "s.youtube.com"
     - "youtubei.googleapis.com"
   script:
-    - match: ^https?:\/\/youtubeil.googleapis\.com//youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch)
+    - match: ^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch)
       name: YouTubequguanggao1
-      type: response require-body: true binary-mode: true timeout: 10
+      type: response
+      require-body: true
+      binary-mode: true
+      timeout: 10
   rewrite:
-    - (^https?:\//[\w-]+\.googlevideol.com//(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
-    - ^https?://I\w-1+\googlevideol.com//(?!(dclk_video_ads|videoplayback\?)).+&oad - reject-200
-    - ^https?: //(www|s)\.youtubel.com/apil/stats\/ads - reject-200
-    - ^https?:/\/(www/s)\.youtubel.com\/(pagead|ptracking) - reject-200
-    - ^https?:\/\/s\.youtubel.com\/api\/stats|/qoel?adcontext - reject-200
+    - (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
+    - ^https?:\/\/\w+-\w+\googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad - reject-200
+    - ^https?:\/\/(www|s)\.youtube\.com/api/stats\/ads - reject-200
+    - ^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) - reject-200
+    - ^https?:\/\/s\.youtube\.com\/api\/stats|/qoe?adcontext - reject-200
+
 script-providers:
   YouTubequguanggao1:
     url: https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/youtube.response.js
