@@ -18,7 +18,7 @@ Object.keys(sites).forEach(site => {
       let content = statuses.join('\n');
 
       $done({
-        title: 'Доступность сайтов',
+        title: 'Доступность сервисов',
         content: content,
         backgroundColor: '#4CAF50',
         icon: 'globe',
