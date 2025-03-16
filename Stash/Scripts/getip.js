@@ -12,7 +12,7 @@ $httpClient.get('https://ipapi.co/json/', function (error, response, data) {
       let content = `${info.ip}\n${info.city}\n${info.org}\nПинг: ${pingTime}`;
       
       $done({
-        title: 'Your IP',
+        title: 'Информация',
         content: content,
         backgroundColor: '#696aad',
         icon: 'network',
