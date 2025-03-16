@@ -1,0 +1,31 @@
+category: tiles
+name: |-
+  Get Ip
+icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png
+http:
+  mitm:
+    - "net-lsp-x.com"
+
+  script:
+    # Request
+    - match: ^https?:\/\/net-lsp-x\.com
+      name: "getip"
+      type: request
+      timeout: 120
+
+tiles:
+  # Panel
+  - name: "getip"
+    interval: 300
+    content: "..."
+    icon: "antenna.radiowaves.left.and.right.circle.fill"
+    backgroundColor: "#178BD8"
+    title: "getip"
+    timeout: 30
+    argument: |-
+      TYPE=TILE&icon=globe.asia.australia&flag=1
+
+script-providers:
+  "getip":
+    url: https://raw.githubusercontent.com/xream/scripts/main/surge/modules/network-info/net-lsp-x.js
+    interval: 86400
