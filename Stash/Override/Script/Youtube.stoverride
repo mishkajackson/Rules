@@ -1,6 +1,6 @@
 name: YouTube_Block
 desc: Блокировка рекламы YouTube, поддержка PiP и фонового воспроизведения
-
+category: Scripts
 http:
   mitm:
     - "-redirector*.googlevideo.com"
