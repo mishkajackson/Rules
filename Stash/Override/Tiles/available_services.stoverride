@@ -6,7 +6,7 @@ tiles:
   - name: "site_ping"
     interval: 300
     content: "..."
-    icon: "globe"
+    icon: "waveform.path.ecg"
     backgroundColor: "#4CAF50"
     title: "Доступность сервисов"
     timeout: 30
