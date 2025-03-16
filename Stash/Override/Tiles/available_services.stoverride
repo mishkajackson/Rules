@@ -1,6 +1,7 @@
 category: Tiles
 name: "Available services"
 icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png"
+desc: "Проверяет доступность сайтов (YouTube, Instagram, OpenAI) и отображает их пинг."
 
 tiles:
   - name: "site_ping"
