@@ -22,5 +22,5 @@ http:
     - ^https?:\/\/s\.youtubel.com\/api\/stats|/qoel?adcontext - reject-200
 script-providers:
   YouTubequguanggao1:
-    url: https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/ youtube.response.js
+    url: https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/youtube.response.js
     interval: 86400
