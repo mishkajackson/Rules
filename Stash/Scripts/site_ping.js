@@ -10,7 +10,7 @@ let checked = 0;
 
 Object.keys(sites).forEach(site => {
   let startTime = Date.now();
-  $httpClient.get(sites[site], function (error) {
+  $httpClient.head(sites[site], function (error) {
     let pingTime = error ? 'N/A' : (Date.now() - startTime) + ' ms';
     statuses.push(`${site}: ${pingTime}`);
     checked++;
