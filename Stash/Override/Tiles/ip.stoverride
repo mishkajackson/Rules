@@ -5,10 +5,10 @@ icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Globa
 tiles:
   - name: "my-ip"
     interval: 300
-    content: "Fetching..."
+    content: "Загрузка..."
     icon: "network"
-    backgroundColor: "#178BD8"
-    title: "Your IP"
+    backgroundColor: "#696aad"
+    title: "Информация"
     timeout: 30
 
 script-providers:
