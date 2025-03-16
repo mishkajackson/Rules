@@ -9,7 +9,7 @@ $httpClient.get('https://ipapi.co/json/', function (error, response, data) {
     $httpClient.get('https://1.1.1.1/cdn-cgi/trace', function (pingError, pingResponse, pingData) {
       let pingTime = pingError ? 'N/A' : (Date.now() - startTime) + ' ms';
       
-      let content = `IP: ${info.ip}\n${info.city}\nISP: ${info.org}\nPing: ${pingTime}`;
+      let content = `${info.ip}\n${info.city}\${info.org}\nPing: ${pingTime}`;
       
       $done({
         title: 'Информация',
