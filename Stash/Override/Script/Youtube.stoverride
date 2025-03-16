@@ -11,7 +11,7 @@ http:
     - "youtubei.googleapis.com"
   script:
     - match: ^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch)
-      name: YouTubequguanggao1
+      name: YouTubePremium
       type: response
       require-body: true
       binary-mode: true
@@ -23,6 +23,6 @@ http:
     - ^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) - reject-200
     - ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext - reject-200
 script-providers:
-  YouTubequguanggao1:
+  YouTubePremium:
     url: https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/refs/heads/release/scripts/rewrite.youtube.response.preview.js
     interval: 86400
