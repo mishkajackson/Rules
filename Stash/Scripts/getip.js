@@ -14,7 +14,7 @@ $httpClient.get('https://ipapi.co/json/', function (error, response, data) {
       $done({
         title: 'Информация',
         content: content,
-        backgroundColor: '#178BD8',
+        backgroundColor: '#696aad',
         icon: 'network',
       });
     });
