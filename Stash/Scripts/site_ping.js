@@ -1,7 +1,8 @@
 let sites = {
   'YouTube': 'https://www.youtube.com',
   'Instagram': 'https://www.instagram.com',
-  'OpenAI': 'https://openai.com'
+  'OpenAI': 'https://openai.com',
+  'KinoPub': 'https://kino.pub'
 };
 
 let statuses = [];
