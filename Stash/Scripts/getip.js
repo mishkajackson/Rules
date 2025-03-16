@@ -9,12 +9,12 @@ $httpClient.get('https://ipapi.co/json/', function (error, response, data) {
     $httpClient.get('https://1.1.1.1/cdn-cgi/trace', function (pingError, pingResponse, pingData) {
       let pingTime = pingError ? 'N/A' : (Date.now() - startTime) + ' ms';
       
-      let content = `IP: ${info.ip}\nLocation: ${info.city}, ${info.region}, ${info.country_name}\nISP: ${info.org}\nPing: ${pingTime}`;
+      let content = `${info.ip}\n${info.city}\n${info.org}\nПинг: ${pingTime}`;
       
       $done({
         title: 'Your IP',
         content: content,
-        backgroundColor: '#178BD8',
+        backgroundColor: '#696aad',
         icon: 'network',
       });
     });
