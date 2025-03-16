@@ -1,0 +1,13 @@
+tiles:
+  - name: "site_ping"
+    interval: 300
+    content: "..."
+    icon: "globe"
+    backgroundColor: "#4CAF50"
+    title: "Доступность сервисов"
+    timeout: 30
+
+script-providers:
+  "site_ping":
+    url: https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Stash/Scripts/site_ping.js
+    interval: 86400
