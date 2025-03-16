@@ -1,8 +1,7 @@
-name: YouTube_Premium
-desc: Блокировка рекламы YouTube, поддержка PiP и фонового воспроизведения
+name: "YouTube Premium"
+desc: Блокировка рекламы, поддержка PiP и фонового воспроизведения
 category: Scripts
-icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png"
-
+icon = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
 http:
   mitm:
     - "-redirector*.googlevideo.com"
@@ -19,11 +18,10 @@ http:
       timeout: 10
   rewrite:
     - (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
-    - ^https?:\/\/\w+-\w+\googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad - reject-200
-    - ^https?:\/\/(www|s)\.youtube\.com/api/stats\/ads - reject-200
+    - ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad - reject-200
+    - ^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads - reject-200
     - ^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) - reject-200
-    - ^https?:\/\/s\.youtube\.com\/api\/stats|/qoe?adcontext - reject-200
-
+    - ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext - reject-200
 script-providers:
   YouTubequguanggao1:
     url: https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/youtube.response.js
