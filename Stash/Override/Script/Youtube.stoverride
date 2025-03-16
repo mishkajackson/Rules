@@ -1,5 +1,6 @@
 name: YouTube Premium
 desc: Блокировка рекламы, поддержка PiP, фонового воспроизведения
+category: Scripts
 icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
 http:
   mitm:
