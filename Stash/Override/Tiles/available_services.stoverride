@@ -1,3 +1,7 @@
+category: Tiles
+name: "Get IP"
+icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png"
+
 tiles:
   - name: "site_ping"
     interval: 300
