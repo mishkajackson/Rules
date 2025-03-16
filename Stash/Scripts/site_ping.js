@@ -22,7 +22,7 @@ Object.keys(sites).forEach(site => {
         title: 'Доступность сервисов',
         content: content,
         backgroundColor: '#4CAF50',
-        icon: 'globe',
+        icon: 'waveform.path.ecg',
       });
     }
   });
