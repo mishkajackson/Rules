@@ -1,5 +1,5 @@
 name: "YouTube Premium"
-desc: Блокировка рекламы, поддержка PiP и фонового воспроизведения
+desc: "Блокировка рекламы, поддержка PiP и фонового воспроизведения"
 category: Scripts
 icon = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
 http:
