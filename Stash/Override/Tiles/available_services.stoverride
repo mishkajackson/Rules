@@ -1,5 +1,5 @@
 category: Tiles
-name: "Get IP"
+name: "Available services"
 icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png"
 
 tiles:
