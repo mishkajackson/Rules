@@ -1,0 +1,20 @@
+name: YouTube SponsorBlock
+desc: Пропуск спонсорских вставок на YouTube
+category: Scripts
+icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png"
+
+http:
+  mitm:
+    - "youtubei.googleapis.com"
+  script:
+    - match: ^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/player
+      name: YouTubeSponsorBlock
+      type: response
+      require-body: true
+      binary-mode: true
+      timeout: 10
+
+script-providers:
+  YouTubeSponsorBlock:
+    url: https://raw.githubusercontent.com/mishkajackson/Rules/main/Stash/Scripts/youtube_sponsorblock.js
+    interval: 86400
