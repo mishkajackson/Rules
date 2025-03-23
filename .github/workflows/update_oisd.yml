@@ -1,0 +1,35 @@
+name: Update OISD
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Запуск каждый день в полночь
+  workflow_dispatch: # Возможность запустить вручную
+
+jobs:
+  update-domains:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout репозитория
+        uses: actions/checkout@v4
+
+      - name: Загрузка списка доменов
+        run: curl -sL "https://raw.githubusercontent.com/sjhgvr/oisd/main/domainswild2_big.txt" -o domains.txt
+
+      - name: Преобразование в нужный формат
+        run: |
+          echo "payload:" > oisd.yaml
+          awk '{print "  - " $0}' domains.txt >> oisd.yaml
+
+      - name: Проверка изменений
+        id: check_changes
+        run: |
+          git diff --quiet || echo "changed=true" >> $GITHUB_ENV
+
+      - name: Commit и Push изменений
+        if: env.changed == 'true'
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add oisd.yaml
+          git commit -m "Обновление списка доменов $(date +'%Y-%m-%d')"
+          git push
