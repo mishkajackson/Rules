@@ -2,9 +2,10 @@ name: Remove Discrod
 category: rule_provider
 icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Discord.png'
 desc: Remove Discord Rules
-rules-providers:
-  discord: #!delete
-  discord-voice: #!delete
-rules:
-  - RULE-SET,discord,DISCORD #!delete
-  - RULE-SET,discord-voice,DISCORD #!delete
+rules-providers: #!delete
+  discord: {}
+  discord-voice: {}
+
+rules: #!delete
+  - RULE-SET,discord,DISCORD
+  - RULE-SET,discord-voice,DISCORD
