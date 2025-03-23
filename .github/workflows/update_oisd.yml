@@ -30,6 +30,6 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git add oisd.yaml
+          git add domains.yaml
           git commit -m "Обновление списка доменов $(date +'%Y-%m-%d')"
-          git push
+          git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/mishkajackson/Rules.git main
