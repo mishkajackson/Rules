@@ -1,0 +1,14 @@
+name: oisd
+category: adblock
+icon: https://oisd.nl/favicon.ico
+desc: OISD Blocklist (Блокировка рекламы)
+rule-providers:
+    oisd: #!replace
+        type: http
+        behavior: domain
+        url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/oisd.yaml"
+        path: ./ruleset/oisd.yaml
+        interval: 86400
+
+rules: #!insert_top
+    - RULE-SET,oisd,REJECT
