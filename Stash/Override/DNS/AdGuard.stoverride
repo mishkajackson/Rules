@@ -3,13 +3,13 @@ category: DNS
 icon: https://st.agrd.eu/favicons/adguard/favicon.ico
 desc: AdGuard DNS over TLS
 dns:
-    default-nameserver:
+    default-nameserver: #!replace
         - 94.140.14.14
         - 94.140.15.15
-    nameserver:
+    nameserver: #!replace
         - tls://dns.adguard.com
         - tls://94.140.14.14
         - tls://94.140.15.15
-    udp-nameserver:
+    udp-nameserver: #!replace
         - 94.140.14.14:53
         - 94.140.15.15:53
