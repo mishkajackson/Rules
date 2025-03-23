@@ -1,7 +1,7 @@
-name: oisd
+name: OISD
 category: adblock
-icon: https://oisd.nl/favicon.ico
-desc: OISD Blocklist (Блокировка рекламы)
+icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/AdWhite.png'
+desc: OISD Blocklist
 rule-providers:
     oisd: #!replace
         type: http
