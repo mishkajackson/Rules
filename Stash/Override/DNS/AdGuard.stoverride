@@ -3,13 +3,13 @@ category: dns_override
 icon: https://st.agrd.eu/favicons/adguard/favicon.ico
 desc: AdGuard DNS over TLS
 dns:
-    default-nameserver: #!replace
+    default-nameserver:
         - 94.140.14.14
         - 94.140.15.15
-    nameserver: #!replace
+    nameserver:
         - tls://dns.adguard.com
         - tls://94.140.14.14
         - tls://94.140.15.15
-    udp-nameserver: #!replace
+    udp-nameserver:
         - 94.140.14.14:53
         - 94.140.15.15:53
