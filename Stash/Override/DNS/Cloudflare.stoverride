@@ -1,6 +1,6 @@
 name: Cloudflare
 category: DNS
-icon: https://favicons.githubusercontent.com/1.1.1.1
+icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
 desc: Cloudflare DNS over TLS
 dns:
     default-nameserver: #!replace
