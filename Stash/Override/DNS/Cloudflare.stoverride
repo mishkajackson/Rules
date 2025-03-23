@@ -1,0 +1,14 @@
+name: Cloudflare
+category: DNS
+icon: https://favicons.githubusercontent.com/1.1.1.1
+desc: Cloudflare DNS over TLS
+dns:
+    default-nameserver: #!replace
+        - 1.1.1.1
+        - 1.0.0.1
+    nameserver: #!replace
+        - tls://1.1.1.1
+        - tls://1.0.0.1
+    udp-nameserver: #!replace
+        - 1.1.1.1:53
+        - 1.0.0.1:53
