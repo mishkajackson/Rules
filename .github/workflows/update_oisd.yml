@@ -20,7 +20,7 @@ jobs:
       - name: Преобразование в нужный формат
         run: |
           echo "payload:" > oisd.yaml
-          awk '{print "  - " $0}' domains.txt >> oisd.yaml
+          grep -v '^#' domains.txt | awk '{print "  - " $0}' >> oisd.yaml
 
       - name: Проверка изменений
         id: check_changes
