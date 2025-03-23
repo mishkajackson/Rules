@@ -1,5 +1,5 @@
 name: AdGuard DNS
-category: dns_override
+category: DNS
 icon: https://st.agrd.eu/favicons/adguard/favicon.ico
 desc: AdGuard DNS over TLS
 dns:
