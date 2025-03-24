@@ -31,8 +31,9 @@ jobs:
         run: |
           mkdir -p data
           find . -name "*.yaml" -exec cat {} \; | grep -oP '\d+\.\d+\.\d+\.\d+(\/\d+)?' > data/custom-ip.txt
+          if [ ! -s data/custom-ip.txt ]; then echo "Нет IP-адресов для обработки" && exit 1; fi
 
-      - name: Генерация geoip.dat (список IP)
+      - name: Генерация geoip.dat
         run: |
           git clone https://github.com/v2fly/geoip.git
           cd geoip
