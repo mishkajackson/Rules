@@ -23,32 +23,59 @@ jobs:
           cd geoip
           go mod download
 
-      - name: Подготовка текстового файла из Discord_IP.yaml
+      - name: Подготовка CIDR из Discord_IP.yaml
+        id: extract_cidr
         run: |
-          mkdir -p geoip/input
-          awk '/payload:/{next} {print $2}' Discord_IP.yaml > geoip/input/discord.lst
-          # Проверка содержимого для отладки
-          cat geoip/input/discord.lst
-          ls -la geoip/input/
+          # Извлекаем CIDR и форматируем в JSON-массив
+          CIDR_LIST=$(awk '/payload:/{next} {print "\"" $2 "\""}' Discord_IP.yaml | paste -sd, -)
+          if [ -z "$CIDR_LIST" ]; then
+            echo "Ошибка: CIDR не найдены в Discord_IP.yaml" >&2
+            exit 1
+          fi
+          echo "CIDR_LIST=$CIDR_LIST" >> $GITHUB_ENV
+          # Проверка для отладки
+          echo "Extracted CIDR: $CIDR_LIST"
 
-      - name: Копирование файла в корень geoip
+      - name: Создание конфигурационного файла config.json
         run: |
           cd geoip
-          cp input/discord.lst .
-          ls -la .
+          cat <<EOF > config.json
+          {
+            "input": [
+              {
+                "type": "text",
+                "action": "add",
+                "args": {
+                  "ipOrCIDR": [${{ env.CIDR_LIST }}],
+                  "tag": "discord"
+                }
+              }
+            ],
+            "output": [
+              {
+                "type": "v2rayGeoIPDat",
+                "args": {
+                  "file": "output/geoip.dat"
+                }
+              }
+            ]
+          }
+          EOF
+          # Проверка конфига
+          cat config.json
 
-      - name: Генерация geoip.dat (попытка без конфига)
+      - name: Генерация geoip.dat
         run: |
           cd geoip
-          go run ./  # Пробуем запустить без config.json, как в чужом workflow
+          go run ./ -c config.json
           mkdir -p ../geodata
-          if [ -f "output/geoip.dat" ]; then
-            mv output/geoip.dat ../geodata/geoip.dat
-          else
+          mv output/geoip.dat ../geodata/geoip.dat
+          # Проверка, что файл создан
+          ls -la ../geodata/
+          if [ ! -f "../geodata/geoip.dat" ]; then
             echo "Ошибка: geoip.dat не был сгенерирован" >&2
             exit 1
           fi
-          ls -la ../geodata/
 
       - name: Проверка изменений
         id: check_changes
