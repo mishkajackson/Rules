@@ -4,7 +4,8 @@
       "type": "text",
       "action": "add",
       "args": {
-        "file": "./data/custom-ip.txt"
+        "name": "custom"
+        "uri": "./data/custom-ip.txt"
       }
     }
   ],
@@ -13,7 +14,7 @@
       "type": "v2rayGeoIPDat",
       "action": "output",
       "args": {
-        "outputDir": "./output",
+        "outputDir": "./geodata",
         "outputName": "geoip.dat"
       }
     }
