@@ -41,7 +41,7 @@ jobs:
                 "type": "text",
                 "action": "add",
                 "args": {
-                  "file": "input/discord.txt",
+                  "name": "input/discord.txt",
                   "tag": "discord"
                 }
               }
