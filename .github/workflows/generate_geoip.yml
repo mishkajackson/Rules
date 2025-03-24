@@ -26,8 +26,8 @@ jobs:
       - name: Подготовка текстового файла из Discord_IP.yaml
         run: |
           mkdir -p geoip/input
-          # Предполагаем, что Discord_IP.yaml содержит CIDR или IP в формате "IP" или "CIDR"
-          awk '{print $1}' Discord_IP.yaml > geoip/input/discord.txt
+          # Извлекаем CIDR из YAML, пропуская заголовок "payload:"
+          awk '/payload:/{next} {print $2}' Discord_IP.yaml > geoip/input/discord.txt
           # Проверка содержимого для отладки
           cat geoip/input/discord.txt
 
@@ -41,8 +41,7 @@ jobs:
                 "type": "text",
                 "action": "add",
                 "args": {
-                  "inputDir": "input",
-                  "name": "discord.txt",
+                  "uri": "input/discord.txt",
                   "tag": "discord"
                 }
               }
