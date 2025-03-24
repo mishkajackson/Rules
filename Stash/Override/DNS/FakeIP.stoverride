@@ -1,17 +1,10 @@
 name: FakeIP
 category: DNS
-icon: https://stash.cloud/static/icons/dns.png
+icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Area.png
 desc: DNS with Fake IP enabled
 dns:
   enable: true
   listen: 0.0.0.0:53
-  default-nameserver: #!replace
-    - 94.140.14.14
-    - 94.140.15.15
-  nameserver: #!replace
-    - tls://dns.adguard.com
-    - tls://94.140.14.14
-    - tls://94.140.15.15
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
     - ".*\\.lan$"
