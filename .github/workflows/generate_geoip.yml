@@ -1,0 +1,89 @@
+name: Generate GeoIP
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Запуск каждый день в полночь
+  workflow_dispatch: # Возможность запустить вручную
+
+jobs:
+  generate-geoip:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout репозитория
+        uses: actions/checkout@v4
+
+      - name: Установка Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      - name: Клонирование geoip
+        run: |
+          git clone https://github.com/v2fly/geoip.git
+          cd geoip
+          go mod download
+
+      - name: Подготовка текстового файла из Discord_IP.yaml
+        run: |
+          mkdir -p geoip/input
+          # Предполагаем, что Discord_IP.yaml содержит CIDR или IP в формате "IP" или "CIDR"
+          awk '{print $1}' Discord_IP.yaml > geoip/input/discord.txt
+          # Проверка содержимого для отладки
+          cat geoip/input/discord.txt
+
+      - name: Создание конфигурационного файла config.json
+        run: |
+          cd geoip
+          cat <<EOF > config.json
+          {
+            "input": [
+              {
+                "type": "text",
+                "action": "add",
+                "args": {
+                  "file": "input/discord.txt",
+                  "tag": "discord"
+                }
+              }
+            ],
+            "output": [
+              {
+                "type": "v2rayGeoIPDat",
+                "args": {
+                  "file": "output/geoip.dat"
+                }
+              }
+            ]
+          }
+          EOF
+          # Проверка конфига
+          cat config.json
+
+      - name: Генерация geoip.dat
+        run: |
+          cd geoip
+          go run ./ -c config.json
+          mkdir -p ../geodata
+          mv output/geoip.dat ../geodata/geoip.dat
+          # Проверка, что файл создан
+          ls -la ../geodata/
+          if [ ! -f "../geodata/geoip.dat" ]; then
+            echo "Ошибка: geoip.dat не был сгенерирован" >&2
+            exit 1
+          fi
+
+      - name: Проверка изменений
+        id: check_changes
+        run: |
+          git add geodata/geoip.dat
+          git diff --cached --quiet || echo "changed=true" >> $GITHUB_ENV
+          # Вывод для отладки
+          echo "Изменения обнаружены: ${{ env.changed }}"
+
+      - name: Commit и Push изменений
+        if: env.changed == 'true'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Обновление geoip.dat $(date +'%Y-%m-%d')"
+          git push https://github-actions:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
