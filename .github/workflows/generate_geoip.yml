@@ -23,18 +23,13 @@ jobs:
           cd geoip
           go mod download
 
-      - name: Подготовка CIDR из Discord_IP.yaml
-        id: extract_cidr
+      - name: Подготовка текстового файла из Discord_IP.yaml
         run: |
-          # Извлекаем CIDR и форматируем в JSON-массив
-          CIDR_LIST=$(awk '/payload:/{next} {print "\"" $2 "\""}' Discord_IP.yaml | paste -sd, -)
-          if [ -z "$CIDR_LIST" ]; then
-            echo "Ошибка: CIDR не найдены в Discord_IP.yaml" >&2
-            exit 1
-          fi
-          echo "CIDR_LIST=$CIDR_LIST" >> $GITHUB_ENV
-          # Проверка для отладки
-          echo "Extracted CIDR: $CIDR_LIST"
+          mkdir -p geoip/input
+          awk '/payload:/{next} {print $2}' Discord_IP.yaml > geoip/input/discord.txt
+          # Проверка содержимого для отладки
+          cat geoip/input/discord.txt
+          ls -la geoip/input/
 
       - name: Создание конфигурационного файла config.json
         run: |
@@ -46,8 +41,8 @@ jobs:
                 "type": "text",
                 "action": "add",
                 "args": {
-                  "ipOrCIDR": [${{ env.CIDR_LIST }}],
-                  "tag": "discord"
+                  "name": "discord",
+                  "uri": "input/discord.txt"
                 }
               }
             ],
@@ -61,8 +56,9 @@ jobs:
             ]
           }
           EOF
-          # Проверка конфига
+          # Проверка конфига и доступности файла
           cat config.json
+          ls -la input/
 
       - name: Генерация geoip.dat
         run: |
