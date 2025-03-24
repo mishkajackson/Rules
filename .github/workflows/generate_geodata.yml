@@ -42,6 +42,7 @@ jobs:
         run: |
           cd domain-list-community
           go run ./ --datapath=data/custom
+          mkdir -p ../geodata
           mv dlc.dat ../geodata/geosite.dat
 
       - name: Проверка изменений
