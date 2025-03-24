@@ -1,4 +1,4 @@
-name: Generate DLC Dat
+name: Generate Geodata
 
 on:
   schedule:
@@ -6,55 +6,39 @@ on:
   workflow_dispatch: # Возможность запустить вручную
 
 jobs:
-  generate-dlc:
+  generate-geodata:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout репозитория
         uses: actions/checkout@v4
 
-      - name: Установка Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: '1.21'
+      - name: Установка зависимостей
+        run: |
+          sudo apt update
+          sudo apt install -y golang git
 
-      - name: Клонирование domain-list-community
+      - name: Генерация geosite.dat (список доменов)
         run: |
           git clone https://github.com/v2fly/domain-list-community.git
           cd domain-list-community
           go mod download
-
-      - name: Копирование YAML-файлов в DLC-формат
-        run: |
-          mkdir -p domain-list-community/data/custom
-          for file in *.yaml; do
-            if [ -f "$file" ]; then
-              category=$(basename "$file" .yaml)
-              echo "# Custom rules for $category" > domain-list-community/data/custom/$category
-              awk -F, '{
-                if ($1 ~ /DOMAIN$/) print "domain:" $2;
-                else if ($1 ~ /DOMAIN-SUFFIX$/) print "domain:" $2;
-                else if ($1 ~ /DOMAIN-KEYWORD$/) print "keyword:" $2;
-              }' "$file" >> domain-list-community/data/custom/$category
-            fi
-          done
-
-      - name: Генерация dlc.dat
-        run: |
-          cd domain-list-community
           go run ./ --datapath=data/custom
           mkdir -p ../geodata
           mv dlc.dat ../geodata/geosite.dat
 
-      - name: Проверка изменений
-        id: check_changes
+      - name: Генерация geoip.dat (список IP)
         run: |
-          git diff --quiet || echo "changed=true" >> $GITHUB_ENV
+          git clone https://github.com/v2fly/geoip.git
+          cd geoip
+          go mod download
+          go run ./ -c config.json
+          mkdir -p ../geodata
+          mv output/dat/geoip.dat ../geodata/geoip.dat
 
       - name: Commit и Push изменений
-        if: env.changed == 'true'
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add geodata/geosite.dat
-          git commit -m "Обновление geosite.dat $(date +'%Y-%m-%d')"
-          git push https://github-actions:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+          git add geodata/geosite.dat geodata/geoip.dat
+          git commit -m "Автообновление geosite.dat и geoip.dat $(date +'%Y-%m-%d')"
+          git push
