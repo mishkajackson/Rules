@@ -22,6 +22,7 @@ jobs:
           git clone https://github.com/v2fly/domain-list-community.git
           cd domain-list-community
           go mod download
+          mkdir -p data/custom  # Создаём директорию, если её нет
           go run ./ --datapath=data/custom
           mkdir -p ../geodata
           mv dlc.dat ../geodata/geosite.dat
