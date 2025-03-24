@@ -34,6 +34,8 @@ jobs:
       - name: Создание конфигурационного файла config.json
         run: |
           cd geoip
+          # Извлекаем CIDR и форматируем их в JSON-массив
+          CIDR_LIST=$(awk '/payload:/{next} {print "\"" $2 "\""}' Discord_IP.yaml | paste -sd, -)
           cat <<EOF > config.json
           {
             "input": [
@@ -41,7 +43,7 @@ jobs:
                 "type": "text",
                 "action": "add",
                 "args": {
-                  "name": "input/discord.txt",
+                  "ipOrCIDR": [$CIDR_LIST],
                   "tag": "discord"
                 }
               }
@@ -56,9 +58,8 @@ jobs:
             ]
           }
           EOF
-          # Проверка конфига и доступности файла
+          # Проверка конфига
           cat config.json
-          ls -la input/
 
       - name: Генерация geoip.dat
         run: |
