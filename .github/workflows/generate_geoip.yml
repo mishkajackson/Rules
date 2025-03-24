@@ -26,10 +26,10 @@ jobs:
       - name: Подготовка текстового файла из Discord_IP.yaml
         run: |
           mkdir -p geoip/input
-          # Извлекаем CIDR из YAML, пропуская заголовок "payload:"
           awk '/payload:/{next} {print $2}' Discord_IP.yaml > geoip/input/discord.txt
           # Проверка содержимого для отладки
           cat geoip/input/discord.txt
+          ls -la geoip/input/
 
       - name: Создание конфигурационного файла config.json
         run: |
@@ -41,7 +41,7 @@ jobs:
                 "type": "text",
                 "action": "add",
                 "args": {
-                  "uri": "input/discord.txt",
+                  "name": "input/discord.txt",
                   "tag": "discord"
                 }
               }
@@ -56,8 +56,9 @@ jobs:
             ]
           }
           EOF
-          # Проверка конфига
+          # Проверка конфига и доступности файла
           cat config.json
+          ls -la input/
 
       - name: Генерация geoip.dat
         run: |
