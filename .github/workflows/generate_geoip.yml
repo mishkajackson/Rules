@@ -65,11 +65,19 @@ jobs:
           cd geoip
           go run ./ -c config.json
           mkdir -p ../geodata
-          mv output/geoip.dat ../geodata/geoip.dat
+          # Перемещаем файл из output/dat/
+          if [ -f "output/dat/geoip.dat" ]; then
+            mv output/dat/geoip.dat ../geodata/geoip.dat
+          else
+            echo "Ошибка: geoip.dat не был сгенерирован в ожидаемом месте" >&2
+            ls -la output/
+            ls -la output/dat/
+            exit 1
+          fi
           # Проверка, что файл создан
           ls -la ../geodata/
           if [ ! -f "../geodata/geoip.dat" ]; then
-            echo "Ошибка: geoip.dat не был сгенерирован" >&2
+            echo "Ошибка: geoip.dat не был перемещен" >&2
             exit 1
           fi
 
