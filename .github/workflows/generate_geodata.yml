@@ -27,14 +27,20 @@ jobs:
           mkdir -p ../geodata
           mv dlc.dat ../geodata/geosite.dat
 
+      - name: Подготовка кастомного списка IP
+        run: |
+          mkdir -p data
+          find . -name "*.yaml" -exec cat {} \; | grep -oP '\d+\.\d+\.\d+\.\d+(\/\d+)?' > data/custom-ip.txt
+
       - name: Генерация geoip.dat (список IP)
         run: |
           git clone https://github.com/v2fly/geoip.git
           cd geoip
           go mod download
-          go run ./ -c config.json
+          cp ../config.json .
+          go run . -c config.json
           mkdir -p ../geodata
-          mv output/dat/geoip.dat ../geodata/geoip.dat
+          mv output/geoip.dat ../geodata/geoip.dat
 
       - name: Commit и Push изменений
         run: |
