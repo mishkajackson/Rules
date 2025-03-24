@@ -1,12 +1,21 @@
 {
-  "sources": [
+  "input": [
     {
-      "format": "text",
-      "files": ["data/custom-ip.txt"]
+      "type": "text",
+      "action": "add",
+      "args": {
+        "uri": "./data/custom-ip.txt"
+      }
     }
   ],
-  "output": {
-    "format": "v2rayGeoIPDat",
-    "file": "output/geoip.dat"
-  }
+  "output": [
+    {
+      "type": "v2rayGeoIPDat",
+      "action": "output",
+      "args": {
+        "outputDir": "./output",
+        "outputName": "geoip.dat"
+      }
+    }
+  ]
 }
