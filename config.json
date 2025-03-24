@@ -4,7 +4,8 @@
       "type": "text",
       "action": "add",
       "args": {
-        "uri": "./data/custom-ip.txt"
+        "inputDir": "./data",
+        "name": "custom-ip"
       }
     }
   ],
