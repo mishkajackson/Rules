@@ -1,0 +1,63 @@
+name: Generate Geodata
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Запуск каждый день в полночь
+  workflow_dispatch: # Возможность запустить вручную
+
+jobs:
+  generate-geodata:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout репозитория
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Создание папки geodata
+        run: mkdir -p geodata
+
+      - name: Очистка старых файлов
+        run: rm -f geodata/geosite.dat geodata/geoip.dat
+
+      - name: Обработка YAML-файлов
+        run: |
+          # Создаём пустые файлы
+          touch geodata/geosite.dat geodata/geoip.dat
+
+          # Ищем все .yaml файлы в корне репозитория
+          for file in *.yaml; do
+            if [ -f "$file" ]; then
+              category=$(basename "$file" .yaml)  # Имя категории = имя файла без расширения
+
+              # Разбираем содержимое файла
+              while IFS= read -r line; do
+                # Пропускаем пустые строки и заголовки payload:
+                [[ -z "$line" || "$line" == "payload:" ]] && continue
+
+                # Убираем лишние пробелы и "-"
+                entry=$(echo "$line" | sed 's/^ *- *//')
+
+                # Определяем тип записи
+                if [[ "$entry" =~ ^(DOMAIN|DOMAIN-SUFFIX|DOMAIN-KEYWORD), ]]; then
+                  echo "$category,$entry" >> geodata/geosite.dat
+                elif [[ "$entry" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+ ]]; then
+                  echo "$category,$entry" >> geodata/geoip.dat
+                fi
+              done < "$file"
+            fi
+          done
+
+      - name: Проверка изменений
+        id: check_changes
+        run: |
+          git diff --quiet || echo "changed=true" >> $GITHUB_ENV
+
+      - name: Commit и Push изменений
+        if: env.changed == 'true'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add geodata/geosite.dat geodata/geoip.dat
+          git commit -m "Обновление geosite.dat и geoip.dat $(date +'%Y-%m-%d')"
+          git push https://github-actions:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
