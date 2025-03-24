@@ -1,0 +1,14 @@
+{
+  "sources": [
+    {
+      "format": "text",
+      "files": ["data/custom-ip.txt"]
+    }
+  ],
+  "output": [
+    {
+      "format": "v2rayGeoIPDat",
+      "file": "output/geoip.dat"
+    }
+  ]
+}
