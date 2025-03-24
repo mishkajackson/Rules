@@ -1,0 +1,17 @@
+name: FakeIP
+category: dns
+icon: https://stash.cloud/static/icons/dns.png
+desc: DNS with Fake IP enabled
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  default-nameserver: #!replace
+    - 8.8.8.8
+    - 8.8.4.4
+  nameserver: #!replace
+    - tls://8.8.8.8
+    - tls://8.8.4.4
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - ".*\\.lan$"
+    - "localhost"
