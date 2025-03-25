@@ -27,19 +27,26 @@ jobs:
         run: |
           mkdir -p geoip/input
           cd Clash/IPs
-          if [ ! -f *.yaml ]; then
+          # Проверяем наличие .yaml файлов
+          if ! ls *.yaml >/dev/null 2>&1; then
             echo "Ошибка: в Clash/IPs нет YAML-файлов" >&2
             exit 1
           fi
           for file in *.yaml; do
             if [ -f "$file" ]; then
-              name=$(basename "$file" .yaml)
-              sed -n '/payload:/,$p' "$file" | grep '^- "' | sed 's/^- "\(.*\)"/\1/' > ../../geoip/input/"$name.txt"
+              name=$(basename "$file" .yaml | tr '[:upper:]' '[:lower:]')
+              sed -n '/payload:/,$p' "$file" | grep '^- "' | sed 's/^- "\(.*\)"/\1/' | grep -v '^$' > ../../geoip/input/"$name.txt"
+              if [ ! -s "../../geoip/input/$name.txt" ]; then
+                echo "Ошибка: $name.txt пустой после обработки $file" >&2
+                exit 1
+              fi
             fi
           done
-          # Проверка содержимого для отладки
+          # Отладка
+          echo "Содержимое geoip/input:"
           ls -la ../../geoip/input/
-          cat ../../geoip/input/*.txt || echo "Нет текстовых файлов для отображения"
+          echo "Содержимое всех .txt файлов:"
+          cat ../../geoip/input/*.txt || echo "Нет текстовых файлов"
 
       - name: Создание конфигурационного файла config.json
         run: |
@@ -76,28 +83,24 @@ jobs:
           echo "    }" >> config.json
           echo "  ]" >> config.json
           echo "}" >> config.json
-          # Проверка конфига
+          # Отладка
+          echo "Содержимое config.json:"
           cat config.json
 
       - name: Генерация geoip.dat
         run: |
           cd geoip
-          go run ./ -c config.json
+          go run ./ -c config.json || (echo "Ошибка при генерации geoip.dat"; exit 1)
           mkdir -p ../Geodata
           if [ -f "output/dat/geoip.dat" ]; then
             mv output/dat/geoip.dat ../Geodata/geoip.dat
           else
-            echo "Ошибка: geoip.dat не был сгенерирован в ожидаемом месте" >&2
+            echo "Ошибка: geoip.dat не был сгенерирован"
             ls -la output/
-            ls -la output/dat/
+            ls -la output/dat/ || echo "Папка output/dat отсутствует"
             exit 1
           fi
-          # Проверка, что файл создан
           ls -la ../Geodata/
-          if [ ! -f "../Geodata/geoip.dat" ]; then
-            echo "Ошибка: geoip.dat не был перемещен" >&2
-            exit 1
-          fi
 
       - name: Проверка изменений
         id: check_changes
