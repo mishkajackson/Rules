@@ -88,14 +88,6 @@ proxy-groups:
       - DIRECT
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/ChatGPT.png'
 
-  - name: FICBOOK
-    type: select
-    include-all: true
-    proxies:
-      - AUTO
-      - DIRECT
-    icon: 'https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Bookpedia.png'
-
   - name: ANIME
     type: select
     include-all: true
@@ -212,13 +204,6 @@ rule-providers:
     interval: 86400
     path: ./ruleset/anime.yaml
 
-  ficbook:
-    behavior: classical
-    type: http
-    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Ficbook.yaml"
-    interval: 86400
-    path: ./ruleset/ficbook.yaml
-
   instagram:
     behavior: classical
     type: http
@@ -296,7 +281,6 @@ rules:
   - RULE-SET,discord-voice,DISCORD
   - RULE-SET,ai,AI
   - RULE-SET,anime,ANIME
-  - RULE-SET,ficbook,FICBOOK
   - RULE-SET,instagram,INSTAGRAM
   - RULE-SET,kinopub,KINOPUB
   - RULE-SET,twitter,TWITTER
