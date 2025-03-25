@@ -163,105 +163,105 @@ rule-providers:
   youtube:
     behavior: classical
     type: http
-    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Youtube.yaml"
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Youtube.yaml"
     interval: 86400
     path: ./ruleset/youtube.yaml
 
   discord:
     behavior: classical
     type: http
-    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Discord.yaml"
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Discord.yaml"
     interval: 86400
     path: ./ruleset/discord.yaml
 
   discord-voice:
     behavior: classical
     type: http
-    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Discord_Voice.yaml"
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/IPs/Discord.yaml"
     interval: 86400
     path: ./ruleset/discord_voice.yaml
 
   ai:
     behavior: classical
     type: http
-    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/AI.yaml"
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/AI.yaml"
     interval: 86400
     path: ./ruleset/ai.yaml
 
   anime:
     behavior: classical
     type: http
-    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Anime.yaml"
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Anime.yaml"
     interval: 86400
     path: ./ruleset/anime.yaml
 
   ficbook:
     behavior: classical
     type: http
-    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Ficbook.yaml"
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Ficbook.yaml"
     interval: 86400
     path: ./ruleset/ficbook.yaml
 
   instagram:
     behavior: classical
     type: http
-    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Instagram.yaml"
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Instagram.yaml"
     interval: 86400
     path: ./ruleset/instagram.yaml
 
   kinopub:
     behavior: classical
     type: http
-    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/KinoPub.yaml"
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/KinoPub.yaml"
     interval: 86400
     path: ./ruleset/kinopub.yaml
 
   twitter:
     behavior: classical
     type: http
-    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Twitter.yaml"
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Twitter.yaml"
     interval: 86400
     path: ./ruleset/twitter.yaml
 
   tiktok:
     behavior: classical
     type: http
-    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/TikTok.yaml"
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/TikTok.yaml"
     interval: 86400
     path: ./ruleset/tiktok.yaml
 
   spotify:
     behavior: classical
     type: http
-    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Spotify.yaml"
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Spotify.yaml"
     interval: 86400
     path: ./ruleset/spotify.yaml
 
   steam-store:
     behavior: classical
     type: http
-    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Steam_Store.yaml"
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Steam_Store.yaml"
     interval: 86400
     path: ./ruleset/steam-store.yaml
 
   love:
     behavior: classical
     type: http
-    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Love_full.yaml"
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Love_full.yaml"
     interval: 86400
     path: ./ruleset/love.yaml
     
   check:
     behavior: classical
     type: http
-    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Check.yaml"
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Check.yaml"
     interval: 86400
     path: ./ruleset/check.yaml
     
   other:
     behavior: classical
     type: http
-    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Other.yaml"
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Other.yaml"
     interval: 86400
     path: ./ruleset/other.yaml
 
