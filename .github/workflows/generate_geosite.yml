@@ -34,12 +34,18 @@ jobs:
           for file in *.yaml; do
             if [ -f "$file" ]; then
               name=$(basename "$file" .yaml)
-              # Извлекаем IP и добавляем /32, если префикс отсутствует
-              sed -n '/payload:/,$p' "$file" | grep '^- "' | sed 's/^- "\(.*\)"/\1/' | awk '{if ($1 ~ /^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$/) print $1 "/32"; else print $1}' > ../../geoip/input/"$name.txt"
+              # Извлекаем IP из payload, убираем кавычки и фильтруем пустые строки
+              sed -n '/payload:/,$p' "$file" | grep '^- "' | sed 's/^- "\(.*\)"/\1/' | grep -v '^$' > ../../geoip/input/"$name.txt"
+              # Проверка, что файл не пустой
+              if [ ! -s "../../geoip/input/$name.txt" ]; then
+                echo "Ошибка: $name.txt пустой после обработки $file" >&2
+                exit 1
+              fi
             fi
           done
           # Проверка содержимого для отладки
           ls -la ../../geoip/input/
+          echo "Содержимое текстовых файлов:"
           cat ../../geoip/input/*.txt || echo "Нет текстовых файлов для отображения"
 
       - name: Создание конфигурационного файла config.json
@@ -78,6 +84,7 @@ jobs:
           echo "  ]" >> config.json
           echo "}" >> config.json
           # Проверка конфига
+          echo "Содержимое config.json:"
           cat config.json
 
       - name: Генерация geoip.dat
