@@ -23,13 +23,27 @@ jobs:
           cd geoip
           go mod download
 
-      - name: Подготовка текстового файла из Discord_IP.yaml
+      - name: Подготовка текстовых файлов из Clash/IPs
         run: |
           mkdir -p geoip/input
-          awk '/payload:/{next} {print $2}' Discord_IP.yaml > geoip/input/discord.txt
+          # Проверяем наличие папки Clash/IPs
+          if [ ! -d "Clash/IPs" ]; then
+            echo "Ошибка: папка Clash/IPs не найдена" >&2
+            exit 1
+          fi
+          # Обрабатываем все .yaml файлы в Clash/IPs
+          for yaml_file in Clash/IPs/*.yaml; do
+            if [ -f "$yaml_file" ]; then
+              # Извлекаем имя файла без пути и расширения
+              base_name=$(basename "$yaml_file" .yaml)
+              # Извлекаем CIDR из YAML и сохраняем в geoip/input
+              awk '/payload:/{next} {print $2}' "$yaml_file" > "geoip/input/${base_name}.txt"
+              echo "Обработан файл: $yaml_file -> geoip/input/${base_name}.txt"
+            fi
+          done
           # Проверка содержимого для отладки
-          cat geoip/input/discord.txt
           ls -la geoip/input/
+          find geoip/input/ -type f -exec cat {} \;
 
       - name: Создание конфигурационного файла config.json
         run: |
@@ -41,8 +55,7 @@ jobs:
                 "type": "text",
                 "action": "add",
                 "args": {
-                  "name": "discord",
-                  "uri": "input/discord.txt"
+                  "inputDir": "input"
                 }
               }
             ],
@@ -56,7 +69,7 @@ jobs:
             ]
           }
           EOF
-          # Проверка конфига и доступности файла
+          # Проверка конфига и доступности файлов
           cat config.json
           ls -la input/
 
