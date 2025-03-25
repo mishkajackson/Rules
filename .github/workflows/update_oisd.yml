@@ -19,8 +19,8 @@ jobs:
 
       - name: Преобразование в нужный формат
         run: |
-          echo "payload:" > oisd.yaml
-          grep -v '^#' domains.txt | grep -v '^$' | awk '{print "  - \"" $0 "\""}' >> oisd.yaml
+          echo "payload:" > Clash/Domains/Oisd.yaml
+          grep -v '^#' domains.txt | grep -v '^$' | awk '{print "  - \"" $0 "\""}' >> Clash/Domains/Oisd.yaml
 
       - name: Проверка изменений
         id: check_changes
@@ -32,6 +32,6 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git add oisd.yaml
-          git commit -m "Обновление списка доменов $(date +'%Y-%m-%d')"
+          git add Clash/Domains/Oisd.yaml
+          git commit -m "Обновление списка доменов OISD $(date +'%Y-%m-%d')"
           git push origin HEAD:main

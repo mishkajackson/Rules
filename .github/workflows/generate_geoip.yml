@@ -64,10 +64,10 @@ jobs:
         run: |
           cd geoip
           go run ./ -c config.json
-          mkdir -p ../geodata
+          mkdir -p ../Geodata
           # Перемещаем файл из output/dat/
           if [ -f "output/dat/geoip.dat" ]; then
-            mv output/dat/geoip.dat ../geodata/geoip.dat
+            mv output/dat/geoip.dat ../Geodata/geoip.dat
           else
             echo "Ошибка: geoip.dat не был сгенерирован в ожидаемом месте" >&2
             ls -la output/
@@ -75,8 +75,8 @@ jobs:
             exit 1
           fi
           # Проверка, что файл создан
-          ls -la ../geodata/
-          if [ ! -f "../geodata/geoip.dat" ]; then
+          ls -la ../Geodata/
+          if [ ! -f "../Geodata/geoip.dat" ]; then
             echo "Ошибка: geoip.dat не был перемещен" >&2
             exit 1
           fi
@@ -84,7 +84,7 @@ jobs:
       - name: Проверка изменений
         id: check_changes
         run: |
-          git add geodata/geoip.dat
+          git add Geodata/geoip.dat
           git diff --cached --quiet || echo "changed=true" >> $GITHUB_ENV
           echo "Изменения обнаружены: ${{ env.changed }}"
 
