@@ -23,49 +23,67 @@ jobs:
           cd geoip
           go mod download
 
-      - name: Подготовка текстового файла из Discord_IP.yaml
+      - name: Подготовка текстовых файлов из YAML в Clash/IPs
         run: |
           mkdir -p geoip/input
-          awk '/payload:/{next} {print $2}' Discord_IP.yaml > geoip/input/discord.txt
+          cd Clash/IPs
+          if [ ! -f *.yaml ]; then
+            echo "Ошибка: в Clash/IPs нет YAML-файлов" >&2
+            exit 1
+          fi
+          for file in *.yaml; do
+            if [ -f "$file" ]; then
+              name=$(basename "$file" .yaml)
+              sed -n '/payload:/,$p' "$file" | grep '^- "' | sed 's/^- "\(.*\)"/\1/' > ../../geoip/input/"$name.txt"
+            fi
+          done
           # Проверка содержимого для отладки
-          cat geoip/input/discord.txt
-          ls -la geoip/input/
+          ls -la ../../geoip/input/
+          cat ../../geoip/input/*.txt || echo "Нет текстовых файлов для отображения"
 
       - name: Создание конфигурационного файла config.json
         run: |
           cd geoip
-          cat <<EOF > config.json
-          {
-            "input": [
-              {
-                "type": "text",
-                "action": "add",
-                "args": {
-                  "name": "discord",
-                  "uri": "input/discord.txt"
-                }
-              }
-            ],
-            "output": [
-              {
-                "type": "v2rayGeoIPDat",
-                "args": {
-                  "file": "output/geoip.dat"
-                }
-              }
-            ]
-          }
-          EOF
-          # Проверка конфига и доступности файла
+          echo "{" > config.json
+          echo "  \"input\": [" >> config.json
+          cd input
+          first=true
+          for txt in *.txt; do
+            if [ -f "$txt" ]; then
+              name=$(basename "$txt" .txt)
+              if [ "$first" = false ]; then
+                echo "    ," >> ../config.json
+              fi
+              echo "    {" >> ../config.json
+              echo "      \"type\": \"text\"," >> ../config.json
+              echo "      \"action\": \"add\"," >> ../config.json
+              echo "      \"args\": {" >> ../config.json
+              echo "        \"name\": \"$name\"," >> ../config.json
+              echo "        \"uri\": \"input/$txt\"" >> ../config.json
+              echo "      }" >> ../config.json
+              echo "    }" >> ../config.json
+              first=false
+            fi
+          done
+          cd ..
+          echo "  ]," >> config.json
+          echo "  \"output\": [" >> config.json
+          echo "    {" >> config.json
+          echo "      \"type\": \"v2rayGeoIPDat\"," >> config.json
+          echo "      \"args\": {" >> config.json
+          echo "        \"file\": \"output/geoip.dat\"" >> config.json
+          echo "      }" >> config.json
+          echo "    }" >> config.json
+          echo "  ]" >> config.json
+          echo "}" >> config.json
+          # Проверка конфига
           cat config.json
-          ls -la input/
 
       - name: Генерация geoip.dat
         run: |
           cd geoip
           go run ./ -c config.json
           mkdir -p ../Geodata
-          # Перемещаем файл из output/dat/
           if [ -f "output/dat/geoip.dat" ]; then
             mv output/dat/geoip.dat ../Geodata/geoip.dat
           else
