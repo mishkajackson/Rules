@@ -34,16 +34,19 @@ jobs:
           # Обрабатываем все .yaml файлы в Clash/IPs
           for yaml_file in Clash/IPs/*.yaml; do
             if [ -f "$yaml_file" ]; then
-              # Извлекаем имя файла без пути и расширения
               base_name=$(basename "$yaml_file" .yaml)
-              # Извлекаем CIDR из YAML и сохраняем в geoip/input
               awk '/payload:/{next} {print $2}' "$yaml_file" > "geoip/input/${base_name}.txt"
               echo "Обработан файл: $yaml_file -> geoip/input/${base_name}.txt"
+              # Проверка, что файл не пустой
+              if [ ! -s "geoip/input/${base_name}.txt" ]; then
+                echo "Предупреждение: файл geoip/input/${base_name}.txt пустой" >&2
+              fi
             fi
           done
           # Проверка содержимого для отладки
           ls -la geoip/input/
-          find geoip/input/ -type f -exec cat {} \;
+          echo "Содержимое файлов в geoip/input/:"
+          find geoip/input/ -type f -exec echo "Файл: {}" \; -exec cat {} \;
 
       - name: Создание конфигурационного файла config.json
         run: |
@@ -81,17 +84,22 @@ jobs:
           # Перемещаем файл из output/dat/
           if [ -f "output/dat/geoip.dat" ]; then
             mv output/dat/geoip.dat ../Geodata/geoip.dat
+            echo "geoip.dat успешно сгенерирован и перемещен"
+            # Проверка размера файла
+            ls -lh ../Geodata/geoip.dat
           else
             echo "Ошибка: geoip.dat не был сгенерирован в ожидаемом месте" >&2
             ls -la output/
             ls -la output/dat/
             exit 1
           fi
-          # Проверка, что файл создан
+          # Проверка, что файл создан и не пустой
           ls -la ../Geodata/
           if [ ! -f "../Geodata/geoip.dat" ]; then
             echo "Ошибка: geoip.dat не был перемещен" >&2
             exit 1
+          elif [ ! -s "../Geodata/geoip.dat" ]; then
+            echo "Предупреждение: geoip.dat пустой" >&2
           fi
 
       - name: Проверка изменений
