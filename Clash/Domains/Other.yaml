@@ -27,7 +27,6 @@ payload:
   - DOMAIN-SUFFIX,fox.com
   - DOMAIN-SUFFIX,postman.com
   - DOMAIN-SUFFIX,adguard.com
-  - DOMAIN-KEYWORD,adguard
   - DOMAIN-SUFFIX,ficbook.net
   - DOMAIN-SUFFIX,ficbook.com
   - DOMAIN-SUFFIX,ficbook.fandom.com
