@@ -57,6 +57,13 @@ proxy-groups:
     interval: 300
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png'
 
+  - name: ADBLOCK
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/AdWhite.png'
+
   - name: YOUTUBE
     type: select
     include-all: true
@@ -275,7 +282,15 @@ rule-providers:
     interval: 86400
     path: ./ruleset/other.yaml
 
+  oisd:
+    type: http
+    behavior: domain
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/oisd.yaml"
+    path: ./ruleset/oisd.yaml
+    interval: 86400
+
 rules:
+  - RULE-SET,oisd,ADBLOCK
   - RULE-SET,youtube,YOUTUBE
   - RULE-SET,discord,DISCORD
   - RULE-SET,discord-voice,DISCORD

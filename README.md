@@ -1,16 +1,16 @@
 # Proxy Rules Repository
 
-Этот репозиторий содержит правила, конфигурации, скрипты и геоданные для популярных прокси-клиентов: Mihomo (Clash-Meta), Stash, Sing-Box и Shadowrocket.
+Этот репозиторий содержит правила, конфигурации, скрипты и геоданные для прокси-клиентов: Mihomo (Clash-Meta), Stash, Sing-Box и Shadowrocket.
 
 ## Структура репозитория
 
-- **`Mihomo`** — Правила и конфигурации для Mihomo (ранее Clash):
+- **`Clash`** — Правила и конфигурации для Mihomo (Clash-Meta):
   - `Domains` — YAML-файлы с доменами, организованными по категориям.
   - `IPs` — YAML-файлы с IP-адресами, организованными по категориям
   - `Templates` — Шаблоны конфигураций.
-- **`Geodata`** — Файлы геоданных (GeoIP, GeoSite) для всех клиентов.
-- **`Shadowrocket`** — Правила для Shadowrocket.
-- **`Sing-Box`** — Правила и конфигурации для Sing-Box.
+- **`Geodata`** — Файлы геоданных (GeoIP, GeoSite).
+- **`Shadowrocket`** — Конфигурация для Shadowrocket.
+- **`Sing-Box`** — Правила для Sing-Box.
 - **`Stash`** — Переопределения и скрипты для Stash:
   - `Override` — Переопределения:
     - `AD` — Блокировка рекламы.
