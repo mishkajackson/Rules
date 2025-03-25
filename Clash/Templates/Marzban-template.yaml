@@ -1,0 +1,284 @@
+mode: rule
+ipv6: false
+log-level: error
+allow-lan: false
+tproxy-port: 7894
+unified-delay: true
+tcp-concurrent: true
+find-process-mode: strict
+external-controller: 0.0.0.0:9090
+external-ui: ./xd
+
+dns:
+  enable: true
+  listen: 0.0.0.0:7874
+  ipv6: false
+  default-nameserver: [1.1.1.1, 8.8.8.8]
+  nameserver: [https://dns10.quad9.net/dns-query, https://dns.aa.net.uk/dns-query]
+  direct-nameserver: ['system']
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+routing-mark: 2
+
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+  skip-domain:
+    - +.lan
+    - +.local
+
+{{ conf | except("proxy-groups", "port", "mode") | yaml }}
+
+proxy-groups:
+  - name: "AUTO"
+    type: url-test
+    include-all: true
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png'
+
+  - name: YOUTUBE
+    type: select
+    include-all: true
+    proxies:
+      - AUTO
+      - DIRECT
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png'
+
+  - name: DISCORD
+    type: select
+    include-all: true
+    proxies:
+      - AUTO
+      - DIRECT
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Discord.png'
+
+  - name: AI
+    type: select
+    include-all: true
+    proxies:
+      - AUTO
+      - DIRECT
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/ChatGPT.png'
+
+  - name: FICBOOK
+    type: select
+    include-all: true
+    proxies:
+      - AUTO
+      - DIRECT
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Bookpedia.png'
+
+  - name: ANIME
+    type: select
+    include-all: true
+    proxies:
+      - AUTO
+      - DIRECT
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rainbow_1.png'
+
+  - name: INSTAGRAM
+    type: select
+    include-all: true
+    proxies:
+      - AUTO
+      - DIRECT
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Instagram.png'
+
+  - name: KINOPUB
+    type: select
+    include-all: true
+    proxies:
+      - AUTO
+      - DIRECT
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Paramount.png'
+
+  - name: TWITTER
+    type: select
+    include-all: true
+    proxies:
+      - AUTO
+      - DIRECT
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/X.png'
+
+  - name: TIKTOK
+    type: select
+    include-all: true
+    proxies:
+      - AUTO
+      - DIRECT
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok.png'
+
+  - name: SPOTIFY
+    type: select
+    include-all: true
+    proxies:
+      - AUTO
+      - DIRECT
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png'
+
+  - name: STEAM-STORE
+    type: select
+    include-all: true
+    proxies:
+      - AUTO
+      - DIRECT
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Steam.png'
+
+  - name: LOVE
+    type: select
+    include-all: true
+    proxies:
+      - AUTO
+      - DIRECT
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Pornhub.png'
+
+  - name: CHECK
+    type: select
+    include-all: true
+    proxies:
+      - AUTO
+      - DIRECT
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png'
+
+  - name: OTHER
+    type: select
+    include-all: true
+    proxies:
+      - AUTO
+      - DIRECT
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png'
+
+rule-providers:
+  youtube:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Youtube.yaml"
+    interval: 86400
+    path: ./ruleset/youtube.yaml
+
+  discord:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Discord.yaml"
+    interval: 86400
+    path: ./ruleset/discord.yaml
+
+  discord-voice:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Discord_Voice.yaml"
+    interval: 86400
+    path: ./ruleset/discord_voice.yaml
+
+  ai:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/AI.yaml"
+    interval: 86400
+    path: ./ruleset/ai.yaml
+
+  anime:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Anime.yaml"
+    interval: 86400
+    path: ./ruleset/anime.yaml
+
+  ficbook:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Ficbook.yaml"
+    interval: 86400
+    path: ./ruleset/ficbook.yaml
+
+  instagram:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Instagram.yaml"
+    interval: 86400
+    path: ./ruleset/instagram.yaml
+
+  kinopub:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/KinoPub.yaml"
+    interval: 86400
+    path: ./ruleset/kinopub.yaml
+
+  twitter:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Twitter.yaml"
+    interval: 86400
+    path: ./ruleset/twitter.yaml
+
+  tiktok:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/TikTok.yaml"
+    interval: 86400
+    path: ./ruleset/tiktok.yaml
+
+  spotify:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Spotify.yaml"
+    interval: 86400
+    path: ./ruleset/spotify.yaml
+
+  steam-store:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Steam_Store.yaml"
+    interval: 86400
+    path: ./ruleset/steam-store.yaml
+
+  love:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Love_full.yaml"
+    interval: 86400
+    path: ./ruleset/love.yaml
+    
+  check:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Check.yaml"
+    interval: 86400
+    path: ./ruleset/check.yaml
+    
+  other:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Other.yaml"
+    interval: 86400
+    path: ./ruleset/other.yaml
+
+rules:
+  - RULE-SET,youtube,YOUTUBE
+  - RULE-SET,discord,DISCORD
+  - RULE-SET,discord-voice,DISCORD
+  - RULE-SET,ai,AI
+  - RULE-SET,anime,ANIME
+  - RULE-SET,ficbook,FICBOOK
+  - RULE-SET,instagram,INSTAGRAM
+  - RULE-SET,kinopub,KINOPUB
+  - RULE-SET,twitter,TWITTER
+  - RULE-SET,tiktok,TIKTOK
+  - RULE-SET,spotify,SPOTIFY
+  - RULE-SET,steam-store,STEAM-STORE
+  - RULE-SET,love,LOVE
+  - RULE-SET,check,CHECK
+  - RULE-SET,other,OTHER
+  - MATCH,DIRECT
