@@ -1,4 +1,4 @@
-name: Generate Geosite
+name: Generate GeoIP
 
 on:
   schedule:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch: # Возможность запустить вручную
 
 jobs:
-  generate-dlc:
+  generate-geoip:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout репозитория
@@ -17,50 +17,94 @@ jobs:
         with:
           go-version: '1.21'
 
-      - name: Клонирование domain-list-community
+      - name: Клонирование geoip
         run: |
-          git clone https://github.com/v2fly/domain-list-community.git
-          cd domain-list-community
+          git clone https://github.com/v2fly/geoip.git
+          cd geoip
           go mod download
 
-      - name: Копирование YAML-файлов в DLC-формат
+      - name: Подготовка текстовых файлов из YAML в Clash/IPs
         run: |
-          mkdir -p domain-list-community/data/custom
-          cd Clash/Domains
+          mkdir -p geoip/input
+          cd Clash/IPs
           if [ ! -f *.yaml ]; then
-            echo "Ошибка: в Clash/Domains нет YAML-файлов" >&2
+            echo "Ошибка: в Clash/IPs нет YAML-файлов" >&2
             exit 1
           fi
           for file in *.yaml; do
             if [ -f "$file" ]; then
-              category=$(basename "$file" .yaml)
-              echo "# Custom rules for $category" > ../../domain-list-community/data/custom/$category
-              # Извлекаем строки из payload и преобразуем в формат domain:
-              sed -n '/payload:/,$p' "$file" | grep '^- "' | sed 's/^- "\(.*\)"/domain:\1/' >> ../../domain-list-community/data/custom/$category
+              name=$(basename "$file" .yaml)
+              # Извлекаем IP и добавляем /32, если префикс отсутствует
+              sed -n '/payload:/,$p' "$file" | grep '^- "' | sed 's/^- "\(.*\)"/\1/' | awk '{if ($1 ~ /^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$/) print $1 "/32"; else print $1}' > ../../geoip/input/"$name.txt"
             fi
           done
-          # Проверка, что файлы созданы
-          ls -la ../../domain-list-community/data/custom/
+          # Проверка содержимого для отладки
+          ls -la ../../geoip/input/
+          cat ../../geoip/input/*.txt || echo "Нет текстовых файлов для отображения"
 
-      - name: Генерация dlc.dat
+      - name: Создание конфигурационного файла config.json
         run: |
-          cd domain-list-community
-          go run ./ --datapath=data/custom
+          cd geoip
+          echo "{" > config.json
+          echo "  \"input\": [" >> config.json
+          cd input
+          first=true
+          for txt in *.txt; do
+            if [ -f "$txt" ]; then
+              name=$(basename "$txt" .txt)
+              if [ "$first" = false ]; then
+                echo "    ," >> ../config.json
+              fi
+              echo "    {" >> ../config.json
+              echo "      \"type\": \"text\"," >> ../config.json
+              echo "      \"action\": \"add\"," >> ../config.json
+              echo "      \"args\": {" >> ../config.json
+              echo "        \"name\": \"$name\"," >> ../config.json
+              echo "        \"uri\": \"input/$txt\"" >> ../config.json
+              echo "      }" >> ../config.json
+              echo "    }" >> ../config.json
+              first=false
+            fi
+          done
+          cd ..
+          echo "  ]," >> config.json
+          echo "  \"output\": [" >> config.json
+          echo "    {" >> config.json
+          echo "      \"type\": \"v2rayGeoIPDat\"," >> config.json
+          echo "      \"args\": {" >> config.json
+          echo "        \"file\": \"output/geoip.dat\"" >> config.json
+          echo "      }" >> config.json
+          echo "    }" >> config.json
+          echo "  ]" >> config.json
+          echo "}" >> config.json
+          # Проверка конфига
+          cat config.json
+
+      - name: Генерация geoip.dat
+        run: |
+          cd geoip
+          go run ./ -c config.json
           mkdir -p ../Geodata
-          mv dlc.dat ../Geodata/geosite.dat
-          # Проверка, что файл существует
+          if [ -f "output/dat/geoip.dat" ]; then
+            mv output/dat/geoip.dat ../Geodata/geoip.dat
+          else
+            echo "Ошибка: geoip.dat не был сгенерирован в ожидаемом месте" >&2
+            ls -la output/
+            ls -la output/dat/
+            exit 1
+          fi
+          # Проверка, что файл создан
           ls -la ../Geodata/
-          if [ ! -f "../Geodata/geosite.dat" ]; then
-            echo "Ошибка: geosite.dat не был сгенерирован" >&2
+          if [ ! -f "../Geodata/geoip.dat" ]; then
+            echo "Ошибка: geoip.dat не был перемещен" >&2
             exit 1
           fi
 
       - name: Проверка изменений
         id: check_changes
         run: |
-          git add Geodata/geosite.dat
+          git add Geodata/geoip.dat
           git diff --cached --quiet || echo "changed=true" >> $GITHUB_ENV
-          # Вывод для отладки
           echo "Изменения обнаружены: ${{ env.changed }}"
 
       - name: Commit и Push изменений
@@ -68,5 +112,5 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Обновление geosite.dat $(date +'%Y-%m-%d')"
+          git commit -m "Обновление geoip.dat $(date +'%Y-%m-%d')"
           git push https://github-actions:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
