@@ -26,21 +26,19 @@ jobs:
       - name: Копирование YAML-файлов в DLC-формат
         run: |
           mkdir -p domain-list-community/data/custom
-          cd Clash/Domains
-          if [ ! -f *.yaml ]; then
-            echo "Ошибка: в Clash/Domains нет YAML-файлов" >&2
-            exit 1
-          fi
           for file in *.yaml; do
-            if [ -f "$file" ]; then
+            if [ -f "$file" ] && [ "$file" != "Discord_IP.yaml" ]; then
               category=$(basename "$file" .yaml)
-              echo "# Custom rules for $category" > ../../domain-list-community/data/custom/$category
-              # Извлекаем строки из payload и преобразуем в формат domain:
-              sed -n '/payload:/,$p' "$file" | grep '^- "' | sed 's/^- "\(.*\)"/domain:\1/' >> ../../domain-list-community/data/custom/$category
+              echo "# Custom rules for $category" > domain-list-community/data/custom/$category
+              awk -F, '{
+                if ($1 ~ /DOMAIN$/) print "domain:" $2;
+                else if ($1 ~ /DOMAIN-SUFFIX$/) print "domain:" $2;
+                else if ($1 ~ /DOMAIN-KEYWORD$/) print "keyword:" $2;
+              }' "$file" >> domain-list-community/data/custom/$category
             fi
           done
           # Проверка, что файлы созданы
-          ls -la ../../domain-list-community/data/custom/
+          ls -la domain-list-community/data/custom/
 
       - name: Генерация dlc.dat
         run: |
