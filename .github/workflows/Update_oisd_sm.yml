@@ -1,0 +1,37 @@
+name: Update OISD Small
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Запуск каждый день в полночь
+  workflow_dispatch: # Возможность запустить вручную
+
+jobs:
+  update-domains:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout репозитория
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Загрузка списка доменов
+        run: curl -sL "https://raw.githubusercontent.com/sjhgvr/oisd/main/domainswild2_small.txt" -o domains.txt
+
+      - name: Преобразование в нужный формат
+        run: |
+          echo "payload:" > Clash/Domains/Oisd_small.yaml
+          grep -v '^#' domains.txt | grep -v '^$' | awk '{print "  - \"" $0 "\""}' >> Clash/Domains/Oisd_small.yaml
+
+      - name: Проверка изменений
+        id: check_changes
+        run: |
+          git diff --quiet || echo "changed=true" >> $GITHUB_ENV
+
+      - name: Commit и Push изменений
+        if: env.changed == 'true'
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add Clash/Domains/Oisd_small.yaml
+          git commit -m "Обновление списка доменов OISD Small $(date +'%Y-%m-%d')"
+          git push origin HEAD:main
