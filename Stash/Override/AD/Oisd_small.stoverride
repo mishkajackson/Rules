@@ -6,7 +6,7 @@ rule-providers:
     oisd: #!replace
         type: http
         behavior: domain
-        url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/oisd.yaml"
+        url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Oisd_small.yaml"
         path: ./ruleset/oisd.yaml
         interval: 86400
 
