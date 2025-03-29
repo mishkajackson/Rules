@@ -3,7 +3,7 @@ category: adblock
 icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/AdWhite.png'
 desc: Блокировка рекламы
 rule-providers:
-    oisd: #!replace
+    oisd_small: #!replace
         type: http
         behavior: domain
         url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Oisd_small.yaml"
@@ -11,4 +11,4 @@ rule-providers:
         interval: 86400
 
 rules: #!insert_top
-    - RULE-SET,oisd,REJECT
+    - RULE-SET,oisd_small,REJECT
