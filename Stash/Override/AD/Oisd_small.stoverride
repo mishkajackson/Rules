@@ -7,7 +7,7 @@ rule-providers:
         type: http
         behavior: domain
         url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Oisd_small.yaml"
-        path: ./ruleset/oisd.yaml
+        path: ./ruleset/oisd_small.yaml
         interval: 86400
 
 rules: #!insert_top
