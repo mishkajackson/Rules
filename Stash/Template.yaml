@@ -39,14 +39,16 @@ proxy-providers:
 proxy-groups:
   - name: "AUTO"
     type: url-test
-    include-all: true
+    use:
+      - sub
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png'
 
   - name: YOUTUBE
     type: select
-    include-all: true
+    use:
+      - sub
     proxies:
       - AUTO
       - DIRECT
@@ -54,7 +56,8 @@ proxy-groups:
 
   - name: DISCORD
     type: select
-    include-all: true
+    use:
+      - sub
     proxies:
       - AUTO
       - DIRECT
@@ -62,23 +65,17 @@ proxy-groups:
 
   - name: AI
     type: select
-    include-all: true
+    use:
+      - sub
     proxies:
       - AUTO
       - DIRECT
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/ChatGPT.png'
 
-  - name: FICBOOK
-    type: select
-    include-all: true
-    proxies:
-      - AUTO
-      - DIRECT
-    icon: 'https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Bookpedia.png'
-
   - name: ANIME
     type: select
-    include-all: true
+    use:
+      - sub
     proxies:
       - AUTO
       - DIRECT
@@ -86,7 +83,8 @@ proxy-groups:
 
   - name: INSTAGRAM
     type: select
-    include-all: true
+    use:
+      - sub
     proxies:
       - AUTO
       - DIRECT
@@ -94,7 +92,8 @@ proxy-groups:
 
   - name: KINOPUB
     type: select
-    include-all: true
+    use:
+      - sub
     proxies:
       - AUTO
       - DIRECT
@@ -102,7 +101,8 @@ proxy-groups:
 
   - name: TWITTER
     type: select
-    include-all: true
+    use:
+      - sub
     proxies:
       - AUTO
       - DIRECT
@@ -110,7 +110,8 @@ proxy-groups:
 
   - name: TIKTOK
     type: select
-    include-all: true
+    use:
+      - sub
     proxies:
       - AUTO
       - DIRECT
@@ -118,7 +119,8 @@ proxy-groups:
 
   - name: SPOTIFY
     type: select
-    include-all: true
+    use:
+      - sub
     proxies:
       - AUTO
       - DIRECT
@@ -126,7 +128,8 @@ proxy-groups:
 
   - name: STEAM-STORE
     type: select
-    include-all: true
+    use:
+      - sub
     proxies:
       - AUTO
       - DIRECT
@@ -134,7 +137,8 @@ proxy-groups:
 
   - name: LOVE
     type: select
-    include-all: true
+    use:
+      - sub
     proxies:
       - AUTO
       - DIRECT
@@ -142,7 +146,8 @@ proxy-groups:
 
   - name: CHECK
     type: select
-    include-all: true
+    use:
+      - sub
     proxies:
       - AUTO
       - DIRECT
@@ -150,7 +155,8 @@ proxy-groups:
 
   - name: OTHER
     type: select
-    include-all: true
+    use:
+      - sub
     proxies:
       - AUTO
       - DIRECT
