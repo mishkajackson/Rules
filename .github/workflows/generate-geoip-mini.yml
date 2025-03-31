@@ -19,10 +19,12 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.10'  # Python 3.10, так как 3.11 не поддерживает maxminddb-writer
 
       - name: Install dependencies
-        run: pip install maxminddb-writer
+        run: |
+          pip install git+https://github.com/maxmind/libmaxminddb.git
+          pip install git+https://github.com/maxmind/MaxMind-DB-Writer-python.git
 
       - name: Generate geoip.mmdb
         run: |
