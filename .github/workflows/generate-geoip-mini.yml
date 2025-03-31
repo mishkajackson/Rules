@@ -1,4 +1,4 @@
-name: Generate Minimal GeoIP
+name: Generate Empty GeoIP
 
 on:
   push:
@@ -16,44 +16,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'  # Python 3.10, так как 3.11 не поддерживает maxminddb-writer
-
-      - name: Install dependencies
+      - name: Create empty geoip.mmdb
         run: |
-          pip install git+https://github.com/maxmind/libmaxminddb.git
-          pip install git+https://github.com/maxmind/MaxMind-DB-Writer-python.git
-
-      - name: Generate geoip.mmdb
-        run: |
-          python <<EOF
-          from maxminddb.writer import Writer
-          with open("geoip.mmdb", "wb") as f:
-              writer = Writer(
-                  f,
-                  metadata={
-                      "description": {"en": "Minimal GeoIP Database"},
-                      "ip_version": 4,
-                      "record_size": 24,
-                      "node_count": 2,
-                      "languages": ["en"],
-                      "binary_format_major_version": 2,
-                      "binary_format_minor_version": 0,
-                      "database_type": "GeoLite2-Country",
-                  },
-                  ip_version=4,
-                  record_size=24
-              )
-              writer.insert_network("127.0.0.1/32", {"country": {"iso_code": "ZZ"}})
-              writer.write()
-          EOF
+          echo -n -e "\xab\xcd\xefMaxMind.com" > geoip.mmdb
 
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add geoip.mmdb
-          git commit -m "Update geoip.mmdb" || echo "No changes to commit"
+          git commit -m "Generate minimal geoip.mmdb" || echo "No changes to commit"
           git push
