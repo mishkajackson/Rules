@@ -4,45 +4,35 @@ payload:
   - DOMAIN-SUFFIX,4pda.to
   - DOMAIN-SUFFIX,abook-club.ru
   - DOMAIN-SUFFIX,adguard.com
+  - DOMAIN-SUFFIX,adobe.io
   - DOMAIN-SUFFIX,afcs.dellcdn.com
   - DOMAIN-SUFFIX,aftermarket.schaeffler.com
   - DOMAIN-SUFFIX,aftermarket.zf.com
   - DOMAIN-SUFFIX,alberta.ca
-  - DOMAIN-SUFFIX,amnezia.org
-  - DOMAIN-SUFFIX,prostovpn.org
-  - DOMAIN-SUFFIX,home-connect.com
-  - DOMAIN-SUFFIX,radarr.video
-  - DOMAIN-SUFFIX,aplawrence.com
-  - DOMAIN-SUFFIX,m3u.in
-  - DOMAIN-SUFFIX,paraswap.io
-  - DOMAIN-SUFFIX,appstorrent.ru
-  - DOMAIN-SUFFIX,hashicorp.com
-  - DOMAIN-SUFFIX,aqicn.org
-  - DOMAIN-SUFFIX,intel.com
-  - DOMAIN-SUFFIX,intel.ru
-  - DOMAIN-SUFFIX,elastic.co
-  - DOMAIN-SUFFIX,atlassian.com
   - DOMAIN-SUFFIX,amazon.com
+  - DOMAIN-SUFFIX,amnezia.org
+  - DOMAIN-SUFFIX,aplawrence.com
+  - DOMAIN-SUFFIX,appstorrent.ru
+  - DOMAIN-SUFFIX,aqicn.org
+  - DOMAIN-SUFFIX,atlassian.com
   - DOMAIN-SUFFIX,bbci.co.uk
+  - DOMAIN-SUFFIX,betterttv.net
   - DOMAIN-SUFFIX,bitcoin.org
   - DOMAIN-SUFFIX,bitru.org
   - DOMAIN-SUFFIX,booktracker.org
   - DOMAIN-SUFFIX,boosteroid.com
   - DOMAIN-SUFFIX,bosch-home.com
   - DOMAIN-SUFFIX,bradyid.com
-  - DOMAIN-SUFFIX,parsec.app
+  - DOMAIN-SUFFIX,brawlstarsgame.com
+  - DOMAIN-SUFFIX,buckaroo.nl
   - DOMAIN-SUFFIX,bungiestore.com
   - DOMAIN-SUFFIX,canva.com
-  - DOMAIN-SUFFIX,betterttv.net
-  - DOMAIN-SUFFIX,supercell.com
   - DOMAIN-SUFFIX,certifytheweb.com
   - DOMAIN-SUFFIX,chaturbate.com
-  - DOMAIN-SUFFIX,buckaroo.nl
   - DOMAIN-SUFFIX,chess.com
   - DOMAIN-SUFFIX,cisco.com
   - DOMAIN-SUFFIX,citrix.com
   - DOMAIN-SUFFIX,clamav.net
-  - DOMAIN-SUFFIX,mongodb.com
   - DOMAIN-SUFFIX,cloudflare-dns.com
   - DOMAIN-SUFFIX,colta.ru
   - DOMAIN-SUFFIX,crunchyroll.com
@@ -54,18 +44,11 @@ payload:
   - DOMAIN-SUFFIX,devops.com
   - DOMAIN-SUFFIX,digitalocean.com
   - DOMAIN-SUFFIX,disneyplus.com
-  - DOMAIN-SUFFIX,torproject.org
-  - DOMAIN-SUFFIX,redis.com
-  - DOMAIN-SUFFIX,meraki.com
-  - DOMAIN-SUFFIX,jetbrains.com
-  - DOMAIN-SUFFIX,lenovo.com
-  - DOMAIN-SUFFIX,screamingfrog.co.uk
-  - DOMAIN-SUFFIX,wetransfer.com
   - DOMAIN-SUFFIX,dtf.ru
   - DOMAIN-SUFFIX,dw.com
   - DOMAIN-SUFFIX,e621.net
   - DOMAIN-SUFFIX,ej.ru
-  - DOMAIN-SUFFIX,on24.com
+  - DOMAIN-SUFFIX,elastic.co
   - DOMAIN-SUFFIX,exler.ru
   - DOMAIN-SUFFIX,facebook.com
   - DOMAIN-SUFFIX,fbcdn.net
@@ -73,46 +56,62 @@ payload:
   - DOMAIN-SUFFIX,ficbook.com
   - DOMAIN-SUFFIX,ficbook.fandom.com
   - DOMAIN-SUFFIX,ficbook.net
-  - DOMAIN-SUFFIX,oaiusercontent.com
   - DOMAIN-SUFFIX,filmix.biz
-  - DOMAIN-SUFFIX,adobe.io
   - DOMAIN-SUFFIX,flibusta.is
   - DOMAIN-SUFFIX,flibusta.su
   - DOMAIN-SUFFIX,fluke.com
   - DOMAIN-SUFFIX,formula1.com
   - DOMAIN-SUFFIX,fork.pet
   - DOMAIN-SUFFIX,forklog.com
-  - DOMAIN-SUFFIX,voynaplemyon.com
   - DOMAIN-SUFFIX,fox.com
-  - DOMAIN-SUFFIX,ubnt.com
-  - DOMAIN-SUFFIX,brawlstarsgame.com
-  - DOMAIN-SUFFIX,zetalliance.org
   - DOMAIN-SUFFIX,geni.us
   - DOMAIN-SUFFIX,genius.com
   - DOMAIN-SUFFIX,gitlab.io
   - DOMAIN-SUFFIX,gllto.glpals.com
   - DOMAIN-SUFFIX,habr.com
+  - DOMAIN-SUFFIX,hashicorp.com
   - DOMAIN-SUFFIX,hbomax.com
   - DOMAIN-SUFFIX,hdrezka.ag
+  - DOMAIN-SUFFIX,home-connect.com
+  - DOMAIN-SUFFIX,intel.com
   - DOMAIN-SUFFIX,intel.ru
   - DOMAIN-SUFFIX,itdog.info
+  - DOMAIN-SUFFIX,jetbrains.com
+  - DOMAIN-SUFFIX,lenovo.com
+  - DOMAIN-SUFFIX,m3u.in
   - DOMAIN-SUFFIX,max.com
   - DOMAIN-SUFFIX,meduza.io
   - DOMAIN-SUFFIX,medium.com
+  - DOMAIN-SUFFIX,meraki.com
   - DOMAIN-SUFFIX,miracleptr.wordpress.com
+  - DOMAIN-SUFFIX,mongodb.com
   - DOMAIN-SUFFIX,ntc.party
-  - DOMAIN-SUFFIX,primevideo.com
+  - DOMAIN-SUFFIX,oaiusercontent.com
+  - DOMAIN-SUFFIX,on24.com
+  - DOMAIN-SUFFIX,paraswap.io
+  - DOMAIN-SUFFIX,parsec.app
   - DOMAIN-SUFFIX,postman.com
+  - DOMAIN-SUFFIX,primevideo.com
+  - DOMAIN-SUFFIX,prostovpn.org
   - DOMAIN-SUFFIX,protonmail.ch
-  - DOMAIN-SUFFIX,servarr.com
+  - DOMAIN-SUFFIX,radarr.video
+  - DOMAIN-SUFFIX,redis.com
   - DOMAIN-SUFFIX,remna.st
   - DOMAIN-SUFFIX,rentry.co
   - DOMAIN-SUFFIX,rublacklist.net
+  - DOMAIN-SUFFIX,screamingfrog.co.uk
+  - DOMAIN-SUFFIX,servarr.com
   - DOMAIN-SUFFIX,soundcloud.com
+  - DOMAIN-SUFFIX,supercell.com
+  - DOMAIN-SUFFIX,themoviedb.org
   - DOMAIN-SUFFIX,thepiratebay.org
   - DOMAIN-SUFFIX,tmdb.org
-  - DOMAIN-SUFFIX,themoviedb.org
+  - DOMAIN-SUFFIX,torproject.org
+  - DOMAIN-SUFFIX,ubnt.com
+  - DOMAIN-SUFFIX,voynaplemyon.com
+  - DOMAIN-SUFFIX,wetransfer.com
   - DOMAIN-SUFFIX,zerolab.net
+  - DOMAIN-SUFFIX,zetalliance.org
   - DOMAIN-SUFFIX,.ua
   - DOMAIN-KEYWORD,rutor
-  - DOMAIN-KEYWORD,rutracker ​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+  - DOMAIN-KEYWORD,rutracker
