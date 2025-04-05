@@ -12,7 +12,6 @@ payload:
   - DOMAIN-SUFFIX,antizapret.prostovpn.org
   - DOMAIN-SUFFIX,home-connect.com
   - DOMAIN-SUFFIX,radarr.video
-  - DOMAIN-SUFFIX,themoviedb.org
   - DOMAIN-SUFFIX,aplawrence.com
   - DOMAIN-SUFFIX,m3u.in
   - DOMAIN-SUFFIX,paraswap.io
@@ -48,7 +47,6 @@ payload:
   - DOMAIN-SUFFIX,crunchyroll.com
   - DOMAIN-SUFFIX,czx.to
   - DOMAIN-SUFFIX,d.docs.live.net
-  - DOMAIN-SUFFIX,clamav.net
   - DOMAIN-SUFFIX,deezer.com
   - DOMAIN-SUFFIX,dell.com
   - DOMAIN-SUFFIX,deviantart.com
@@ -58,7 +56,6 @@ payload:
   - DOMAIN-SUFFIX,torproject.org
   - DOMAIN-SUFFIX,redis.com
   - DOMAIN-SUFFIX,meraki.com
-  - DOMAIN-SUFFIX,elastic.co
   - DOMAIN-SUFFIX,jetbrains.com
   - DOMAIN-SUFFIX,lenovo.com
   - DOMAIN-SUFFIX,screamingfrog.co.uk
@@ -87,7 +84,6 @@ payload:
   - DOMAIN-SUFFIX,voynaplemyon.com
   - DOMAIN-SUFFIX,fox.com
   - DOMAIN-SUFFIX,ubnt.com
-  - DOMAIN-SUFFIX,ubnt.com
   - DOMAIN-SUFFIX,brawlstarsgame.com
   - DOMAIN-SUFFIX,zetalliance.org
   - DOMAIN-SUFFIX,geni.us
@@ -97,7 +93,6 @@ payload:
   - DOMAIN-SUFFIX,habr.com
   - DOMAIN-SUFFIX,hbomax.com
   - DOMAIN-SUFFIX,hdrezka.ag
-  - DOMAIN-SUFFIX,intel.com
   - DOMAIN-SUFFIX,intel.ru
   - DOMAIN-SUFFIX,itdog.info
   - DOMAIN-SUFFIX,max.com
@@ -116,8 +111,7 @@ payload:
   - DOMAIN-SUFFIX,thepiratebay.org
   - DOMAIN-SUFFIX,tmdb.org
   - DOMAIN-SUFFIX,themoviedb.org
-  - DOMAIN-SUFFIX,torproject.org
   - DOMAIN-SUFFIX,zerolab.net
   - DOMAIN-SUFFIX,.ua
   - DOMAIN-KEYWORD,rutor
-  - DOMAIN-KEYWORD,rutracker
+  - DOMAIN-KEYWORD,rutracker ​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
