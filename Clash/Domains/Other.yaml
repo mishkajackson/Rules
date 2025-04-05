@@ -9,7 +9,6 @@ payload:
   - DOMAIN-SUFFIX,aftermarket.zf.com
   - DOMAIN-SUFFIX,alberta.ca
   - DOMAIN-SUFFIX,amnezia.org
-  - DOMAIN-SUFFIX,anilibria.tv
   - DOMAIN-SUFFIX,antizapret.prostovpn.org
   - DOMAIN-SUFFIX,api.home-connect.com
   - DOMAIN-SUFFIX,api.radarr.video
@@ -97,6 +96,7 @@ payload:
   - DOMAIN-SUFFIX,gllto.glpals.com
   - DOMAIN-SUFFIX,habr.com
   - DOMAIN-SUFFIX,hbomax.com
+  - DOMAIN-SUFFIX,hdrezka.ag
   - DOMAIN-SUFFIX,intel.com
   - DOMAIN-SUFFIX,intel.ru
   - DOMAIN-SUFFIX,itdog.info
