@@ -19,6 +19,7 @@ payload:
   - DOMAIN-SUFFIX,hashicorp.com
   - DOMAIN-SUFFIX,aqicn.org
   - DOMAIN-SUFFIX,intel.com
+  - DOMAIN-SUFFIX,intel.ru
   - DOMAIN-SUFFIX,elastic.co
   - DOMAIN-SUFFIX,atlassian.com
   - DOMAIN-SUFFIX,amazon.com
