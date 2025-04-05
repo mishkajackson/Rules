@@ -10,19 +10,19 @@ payload:
   - DOMAIN-SUFFIX,alberta.ca
   - DOMAIN-SUFFIX,amnezia.org
   - DOMAIN-SUFFIX,antizapret.prostovpn.org
-  - DOMAIN-SUFFIX,api.home-connect.com
-  - DOMAIN-SUFFIX,api.radarr.video
-  - DOMAIN-SUFFIX,api.themoviedb.org
+  - DOMAIN-SUFFIX,home-connect.com
+  - DOMAIN-SUFFIX,radarr.video
+  - DOMAIN-SUFFIX,themoviedb.org
   - DOMAIN-SUFFIX,aplawrence.com
-  - DOMAIN-SUFFIX,app.m3u.in
-  - DOMAIN-SUFFIX,app.paraswap.io
+  - DOMAIN-SUFFIX,m3u.in
+  - DOMAIN-SUFFIX,paraswap.io
   - DOMAIN-SUFFIX,appstorrent.ru
-  - DOMAIN-SUFFIX,apt.releases.hashicorp.com
+  - DOMAIN-SUFFIX,hashicorp.com
   - DOMAIN-SUFFIX,aqicn.org
-  - DOMAIN-SUFFIX,arc.intel.com
-  - DOMAIN-SUFFIX,artifacts.elastic.co
+  - DOMAIN-SUFFIX,intel.com
+  - DOMAIN-SUFFIX,elastic.co
   - DOMAIN-SUFFIX,atlassian.com
-  - DOMAIN-SUFFIX,aws.amazon.com
+  - DOMAIN-SUFFIX,amazon.com
   - DOMAIN-SUFFIX,bbci.co.uk
   - DOMAIN-SUFFIX,bitcoin.org
   - DOMAIN-SUFFIX,bitru.org
@@ -30,11 +30,11 @@ payload:
   - DOMAIN-SUFFIX,boosteroid.com
   - DOMAIN-SUFFIX,bosch-home.com
   - DOMAIN-SUFFIX,bradyid.com
-  - DOMAIN-SUFFIX,builds.parsec.app
+  - DOMAIN-SUFFIX,parsec.app
   - DOMAIN-SUFFIX,bungiestore.com
   - DOMAIN-SUFFIX,canva.com
-  - DOMAIN-SUFFIX,cdn.betterttv.net
-  - DOMAIN-SUFFIX,cdn.id.supercell.com
+  - DOMAIN-SUFFIX,betterttv.net
+  - DOMAIN-SUFFIX,supercell.com
   - DOMAIN-SUFFIX,certifytheweb.com
   - DOMAIN-SUFFIX,chaturbate.com
   - DOMAIN-SUFFIX,checkout.buckaroo.nl
@@ -48,26 +48,26 @@ payload:
   - DOMAIN-SUFFIX,crunchyroll.com
   - DOMAIN-SUFFIX,czx.to
   - DOMAIN-SUFFIX,d.docs.live.net
-  - DOMAIN-SUFFIX,database.clamav.net
+  - DOMAIN-SUFFIX,clamav.net
   - DOMAIN-SUFFIX,deezer.com
   - DOMAIN-SUFFIX,dell.com
   - DOMAIN-SUFFIX,deviantart.com
   - DOMAIN-SUFFIX,devops.com
   - DOMAIN-SUFFIX,digitalocean.com
   - DOMAIN-SUFFIX,disneyplus.com
-  - DOMAIN-SUFFIX,dist.torproject.org
-  - DOMAIN-SUFFIX,docs.redis.com
-  - DOMAIN-SUFFIX,documentation.meraki.com
-  - DOMAIN-SUFFIX,docker.elastic.co
-  - DOMAIN-SUFFIX,download.jetbrains.com
-  - DOMAIN-SUFFIX,download.lenovo.com
-  - DOMAIN-SUFFIX,download.screamingfrog.co.uk
-  - DOMAIN-SUFFIX,download.wetransfer.com
+  - DOMAIN-SUFFIX,torproject.org
+  - DOMAIN-SUFFIX,redis.com
+  - DOMAIN-SUFFIX,meraki.com
+  - DOMAIN-SUFFIX,elastic.co
+  - DOMAIN-SUFFIX,jetbrains.com
+  - DOMAIN-SUFFIX,lenovo.com
+  - DOMAIN-SUFFIX,screamingfrog.co.uk
+  - DOMAIN-SUFFIX,wetransfer.com
   - DOMAIN-SUFFIX,dtf.ru
   - DOMAIN-SUFFIX,dw.com
   - DOMAIN-SUFFIX,e621.net
   - DOMAIN-SUFFIX,ej.ru
-  - DOMAIN-SUFFIX,event.on24.com
+  - DOMAIN-SUFFIX,on24.com
   - DOMAIN-SUFFIX,exler.ru
   - DOMAIN-SUFFIX,facebook.com
   - DOMAIN-SUFFIX,fbcdn.net
@@ -84,12 +84,12 @@ payload:
   - DOMAIN-SUFFIX,formula1.com
   - DOMAIN-SUFFIX,fork.pet
   - DOMAIN-SUFFIX,forklog.com
-  - DOMAIN-SUFFIX,forum.voynaplemyon.com
+  - DOMAIN-SUFFIX,voynaplemyon.com
   - DOMAIN-SUFFIX,fox.com
-  - DOMAIN-SUFFIX,fw-download.ubnt.com
-  - DOMAIN-SUFFIX,fw-update.ubnt.com
-  - DOMAIN-SUFFIX,game.brawlstarsgame.com
-  - DOMAIN-SUFFIX,gallery.zetalliance.org
+  - DOMAIN-SUFFIX,ubnt.com
+  - DOMAIN-SUFFIX,ubnt.com
+  - DOMAIN-SUFFIX,brawlstarsgame.com
+  - DOMAIN-SUFFIX,zetalliance.org
   - DOMAIN-SUFFIX,geni.us
   - DOMAIN-SUFFIX,genius.com
   - DOMAIN-SUFFIX,gitlab.io
