@@ -24,6 +24,7 @@ payload:
   - DOMAIN-SUFFIX,oaistatic.com
   - DOMAIN-SUFFIX,oaiusercontent.com
   - DOMAIN-SUFFIX,observeit.net
+  - DOMAIN-SUFFIX,midjourney.com
   - DOMAIN-SUFFIX,openai.com
   - DOMAIN-SUFFIX,openaiapi-site.azureedge.net
   - DOMAIN-SUFFIX,openaicom.imgix.net
