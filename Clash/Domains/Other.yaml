@@ -9,7 +9,7 @@ payload:
   - DOMAIN-SUFFIX,aftermarket.zf.com
   - DOMAIN-SUFFIX,alberta.ca
   - DOMAIN-SUFFIX,amnezia.org
-  - DOMAIN-SUFFIX,antizapret.prostovpn.org
+  - DOMAIN-SUFFIX,prostovpn.org
   - DOMAIN-SUFFIX,home-connect.com
   - DOMAIN-SUFFIX,radarr.video
   - DOMAIN-SUFFIX,aplawrence.com
@@ -37,12 +37,12 @@ payload:
   - DOMAIN-SUFFIX,supercell.com
   - DOMAIN-SUFFIX,certifytheweb.com
   - DOMAIN-SUFFIX,chaturbate.com
-  - DOMAIN-SUFFIX,checkout.buckaroo.nl
+  - DOMAIN-SUFFIX,buckaroo.nl
   - DOMAIN-SUFFIX,chess.com
   - DOMAIN-SUFFIX,cisco.com
   - DOMAIN-SUFFIX,citrix.com
   - DOMAIN-SUFFIX,clamav.net
-  - DOMAIN-SUFFIX,cloud.mongodb.com
+  - DOMAIN-SUFFIX,mongodb.com
   - DOMAIN-SUFFIX,cloudflare-dns.com
   - DOMAIN-SUFFIX,colta.ru
   - DOMAIN-SUFFIX,crunchyroll.com
@@ -73,9 +73,9 @@ payload:
   - DOMAIN-SUFFIX,ficbook.com
   - DOMAIN-SUFFIX,ficbook.fandom.com
   - DOMAIN-SUFFIX,ficbook.net
-  - DOMAIN-SUFFIX,files.oaiusercontent.com
+  - DOMAIN-SUFFIX,oaiusercontent.com
   - DOMAIN-SUFFIX,filmix.biz
-  - DOMAIN-SUFFIX,firefly-ps.adobe.io
+  - DOMAIN-SUFFIX,adobe.io
   - DOMAIN-SUFFIX,flibusta.is
   - DOMAIN-SUFFIX,flibusta.su
   - DOMAIN-SUFFIX,fluke.com
@@ -104,7 +104,7 @@ payload:
   - DOMAIN-SUFFIX,primevideo.com
   - DOMAIN-SUFFIX,postman.com
   - DOMAIN-SUFFIX,protonmail.ch
-  - DOMAIN-SUFFIX,radarr.servarr.com
+  - DOMAIN-SUFFIX,servarr.com
   - DOMAIN-SUFFIX,remna.st
   - DOMAIN-SUFFIX,rentry.co
   - DOMAIN-SUFFIX,rublacklist.net
