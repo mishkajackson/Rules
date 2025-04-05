@@ -55,3 +55,4 @@ payload:
   - DOMAIN-SUFFIX,grok.com
   - DOMAIN-SUFFIX,use.typekit.net
   - DOMAIN-SUFFIX,sora.com
+  - DOMAIN-SUFFIX,elastic.co
