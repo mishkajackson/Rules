@@ -115,6 +115,7 @@ payload:
   - DOMAIN-SUFFIX,soundcloud.com
   - DOMAIN-SUFFIX,thepiratebay.org
   - DOMAIN-SUFFIX,tmdb.org
+  - DOMAIN-SUFFIX,themoviedb.org
   - DOMAIN-SUFFIX,torproject.org
   - DOMAIN-SUFFIX,zerolab.net
   - DOMAIN-SUFFIX,.ua
