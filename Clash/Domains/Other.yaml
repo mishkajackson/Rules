@@ -90,6 +90,7 @@ payload:
   - DOMAIN-SUFFIX,on24.com
   - DOMAIN-SUFFIX,paraswap.io
   - DOMAIN-SUFFIX,parsec.app
+  - DOMAIN-SUFFIX,paypal.com
   - DOMAIN-SUFFIX,postman.com
   - DOMAIN-SUFFIX,primevideo.com
   - DOMAIN-SUFFIX,prostovpn.org
