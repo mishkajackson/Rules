@@ -105,6 +105,7 @@ payload:
   - DOMAIN-SUFFIX,servarr.com
   - DOMAIN-SUFFIX,soundcloud.com
   - DOMAIN-SUFFIX,supercell.com
+  - DOMAIN-SUFFIX,tietokettu.net
   - DOMAIN-SUFFIX,themoviedb.org
   - DOMAIN-SUFFIX,thepiratebay.org
   - DOMAIN-SUFFIX,tmdb.org
