@@ -1,9 +1,10 @@
 name: media
 desc: media
+category: Tiles
 tiles:
-  - name: liumeitijiance
+  - name: mediacheck
     icon: 'play.tv.fill'
     backgroundColor: '#FF2D55'
 script-providers:
-  liumeitijiance:
-    url: https://raw.githubusercontent.com/LucaLin233/Luca_Conf/main/Surge/JS/stream-all.js
+  mediacheck:
+    url: https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Stash/Scripts/media.js
