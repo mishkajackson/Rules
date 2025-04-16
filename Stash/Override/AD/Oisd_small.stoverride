@@ -6,8 +6,9 @@ rule-providers:
     oisd_small: #!replace
         type: http
         behavior: domain
-        url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Oisd_small.yaml"
-        path: ./ruleset/oisd_small.yaml
+        format: mrs
+        url: "https://github.com/legiz-ru/mihomo-rule-sets/raw/refs/heads/main/oisd/small.mrs"
+        path: ./ruleset/oisd_small.mrs
         interval: 86400
 
 rules: #!insert_top
