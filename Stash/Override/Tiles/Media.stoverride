@@ -1,6 +1,7 @@
 name: media
 desc: media
 category: Tiles
+icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Media.png"
 tiles:
   - name: mediacheck
     icon: 'play.tv.fill'
