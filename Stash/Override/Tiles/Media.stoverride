@@ -1,5 +1,5 @@
-name: media
-desc: media
+name: Check Media
+desc: Проверяет доступность популярных медиасервисов
 category: Tiles
 icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Media.png"
 tiles:
