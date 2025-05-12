@@ -10,7 +10,6 @@
   - `Templates` — Шаблоны конфигураций.
 - **`Geodata`** — Файлы геоданных (GeoIP, GeoSite).
 - **`Shadowrocket`** — Конфигурация для Shadowrocket.
-- **`Sing-Box`** — Правила для Sing-Box.
 - **`Stash`** — Переопределения и скрипты для Stash:
   - `Override` — Переопределения:
     - `AD` — Блокировка рекламы.
