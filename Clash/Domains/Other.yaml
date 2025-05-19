@@ -116,6 +116,7 @@ payload:
   - DOMAIN-SUFFIX,screamingfrog.co.uk
   - DOMAIN-SUFFIX,servarr.com
   - DOMAIN-SUFFIX,soundcloud.com
+  - DOMAIN-SUFFIX,stripe.com
   - DOMAIN-SUFFIX,supercell.com
   - DOMAIN-SUFFIX,tietokettu.net
   - DOMAIN-SUFFIX,themoviedb.org
