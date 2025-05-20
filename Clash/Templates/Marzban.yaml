@@ -54,13 +54,25 @@ proxy-groups:
     - "{{ remark }}"
 {% endfor %}
 
+  - name: "RUSSIA"
+    type: url-test
+    filter: "🇷🇺"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png'
+    proxies:
+{% for remark in proxy_remarks %}
+    - "{{ remark }}"
+{% endfor %}
+
   - name: 'YOUTUBE'
     type: 'select'
     disable-udp: false
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png'
     proxies:
-    - 'AUTO'
-    - 'DIRECT'
+    - RUSSIA
+    - AUTO
+    - DIRECT
 {% for remark in proxy_remarks %}
     - "{{ remark }}"
 {% endfor %}
@@ -112,6 +124,7 @@ proxy-groups:
     type: select
     disable-udp: false
     proxies:
+      - RUSSIA
       - AUTO
       - DIRECT
 {% for remark in proxy_remarks %}
