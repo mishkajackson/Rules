@@ -53,8 +53,7 @@ proxy-groups:
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png'
 
   - name: "RUSSIA"
-    type: url-test
-    filter: "🇷🇺"
+    type: fallback
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
     include-all: true
