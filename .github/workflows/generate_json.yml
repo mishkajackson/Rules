@@ -45,6 +45,9 @@ jobs:
         # Комбинируем списки
         all_files = domains_files + ips_files
 
+        # Сортируем по имени
+        all_files = sorted(all_files, key=lambda x: x["name"].lower())
+
         # Создаем JSON
         with open('Clash/list.json', 'w', encoding='utf-8') as f:
             json.dump(all_files, f, indent=2, ensure_ascii=False)
