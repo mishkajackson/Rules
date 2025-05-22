@@ -16,7 +16,7 @@
     "url": "https://raw.githubusercontent.com/mishkajackson/Rules/main/Clash/Domains/Discord.yaml"
   },
   {
-    "name": "Discord IP",
+    "name": "Discord (IPs)",
     "url": "https://raw.githubusercontent.com/mishkajackson/Rules/main/Clash/IPs/Discord.yaml"
   },
   {
@@ -60,7 +60,7 @@
     "url": "https://raw.githubusercontent.com/mishkajackson/Rules/main/Clash/Domains/Telegram.yaml"
   },
   {
-    "name": "Telegram IP",
+    "name": "Telegram (IPs)",
     "url": "https://raw.githubusercontent.com/mishkajackson/Rules/main/Clash/IPs/Telegram.yaml"
   },
   {
@@ -76,7 +76,7 @@
     "url": "https://raw.githubusercontent.com/mishkajackson/Rules/main/Clash/Domains/WhatsApp.yaml"
   },
   {
-    "name": "Whatsapp IP",
+    "name": "Whatsapp (IPs)",
     "url": "https://raw.githubusercontent.com/mishkajackson/Rules/main/Clash/IPs/Whatsapp.yaml"
   },
   {
