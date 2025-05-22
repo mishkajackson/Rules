@@ -123,6 +123,14 @@ proxy-groups:
       - DIRECT
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png'
 
+  - name: RIOT
+    type: select
+    disable-udp: false
+    proxies:
+      - AUTO
+      - DIRECT
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png'
+
   - name: LOVE
     type: select
     disable-udp: false
@@ -210,6 +218,13 @@ rule-providers:
     interval: 86400
     path: ./ruleset/spotify.yaml
 
+  riot:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Riot.yaml"
+    interval: 86400
+    path: ./ruleset/riot.yaml
+
   love:
     behavior: classical
     type: http
@@ -225,6 +240,7 @@ rule-providers:
     path: ./ruleset/other.yaml
 
 rules:
+  - RULE-SET,other,OTHER
   - RULE-SET,youtube,YOUTUBE
   - RULE-SET,discord,DISCORD
   - RULE-SET,discord-voice,DISCORD
@@ -235,6 +251,6 @@ rules:
   - RULE-SET,twitter,TWITTER
   - RULE-SET,spotify,SPOTIFY
   - RULE-SET,tiktok,TikTok
+  - RULE-SET,riot,RIOT
   - RULE-SET,love,LOVE
-  - RULE-SET,other,OTHER
   - MATCH,DIRECT
