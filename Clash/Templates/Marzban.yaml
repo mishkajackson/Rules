@@ -41,41 +41,34 @@ tun:
   auto-detect-interface: true
   strict-route: true
 
-{{ conf | except("proxy-groups", "port", "mode") | yaml }}
+{{ conf | except("proxy-groups", "port", "mode", "rules") | yaml }}
 
 proxy-groups:
-  - name: "FINLAND"
+  - name: "AUTO"
     type: url-test
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
-    filter: "🇫🇮"
-    include-all: true
-    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Finland.png'
-
-  - name: "RUSSIA"
-    type: fallback
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 300
-    include-all: true
-    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Russia.png'
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png'
+    proxies:
+{% for remark in proxy_remarks %}
+    - "{{ remark }}"
+{% endfor %}
 
   - name: 'YOUTUBE'
     type: 'select'
     disable-udp: false
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png'
     proxies:
-    - RUSSIA
-    - FINLAND
-    - DIRECT
-{% for remark in proxy_remarks %}
+    - 'AUTO'
+    - 'DIRECT'
+    {% for remark in proxy_remarks %}
     - "{{ remark }}"
-{% endfor %}
+    {% endfor %}
   - name: DISCORD
     type: select
     disable-udp: false
     proxies:
-      - FINLAND
-      - RUSSIA
+      - AUTO
       - DIRECT
 {% for remark in proxy_remarks %}
       - "{{ remark }}"
@@ -86,7 +79,7 @@ proxy-groups:
     type: select
     disable-udp: false
     proxies:
-      - FINLAND
+      - AUTO
       - DIRECT
 {% for remark in proxy_remarks %}
       - "{{ remark }}"
@@ -97,8 +90,7 @@ proxy-groups:
     type: select
     disable-udp: false
     proxies:
-      - RUSSIA
-      - FINLAND
+      - AUTO
       - DIRECT
 {% for remark in proxy_remarks %}
       - "{{ remark }}"
@@ -109,8 +101,7 @@ proxy-groups:
     type: select
     disable-udp: false
     proxies:
-      - RUSSIA
-      - FINLAND
+      - AUTO
       - DIRECT
 {% for remark in proxy_remarks %}
       - "{{ remark }}"
@@ -121,8 +112,7 @@ proxy-groups:
     type: select
     disable-udp: false
     proxies:
-      - RUSSIA
-      - FINLAND
+      - AUTO
       - DIRECT
 {% for remark in proxy_remarks %}
       - "{{ remark }}"
@@ -133,7 +123,7 @@ proxy-groups:
     type: select
     disable-udp: false
     proxies:
-      - FINLAND
+      - AUTO
       - DIRECT
 {% for remark in proxy_remarks %}
       - "{{ remark }}"
@@ -144,7 +134,7 @@ proxy-groups:
     type: select
     disable-udp: false
     proxies:
-      - FINLAND
+      - AUTO
       - DIRECT
 {% for remark in proxy_remarks %}
       - "{{ remark }}"
@@ -155,19 +145,29 @@ proxy-groups:
     type: select
     disable-udp: false
     proxies:
-      - FINLAND
+      - AUTO
       - DIRECT
 {% for remark in proxy_remarks %}
       - "{{ remark }}"
 {% endfor %}
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png'
 
+  - name: RIOT
+    type: select
+    disable-udp: false
+    proxies:
+      - AUTO
+      - DIRECT
+{% for remark in proxy_remarks %}
+      - "{{ remark }}"
+{% endfor %}
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png'
+
   - name: LOVE
     type: select
     disable-udp: false
     proxies:
-      - FINLAND
-      - RUSSIA
+      - AUTO
       - DIRECT
 {% for remark in proxy_remarks %}
       - "{{ remark }}"
@@ -178,7 +178,7 @@ proxy-groups:
     type: select
     disable-udp: false
     proxies:
-      - FINLAND
+      - AUTO
       - DIRECT
 {% for remark in proxy_remarks %}
       - "{{ remark }}"
@@ -256,6 +256,13 @@ rule-providers:
     interval: 86400
     path: ./ruleset/spotify.yaml
 
+  riot:
+    behavior: classical
+    type: http
+    url: "https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Riot.yaml"
+    interval: 86400
+    path: ./ruleset/riot.yaml
+
   love:
     behavior: classical
     type: http
@@ -271,6 +278,8 @@ rule-providers:
     path: ./ruleset/other.yaml
 
 rules:
+  - RULE-SET,other,OTHER
+  - RULE-SET,riot,RIOT
   - RULE-SET,youtube,YOUTUBE
   - RULE-SET,discord,DISCORD
   - RULE-SET,discord-voice,DISCORD
@@ -282,5 +291,4 @@ rules:
   - RULE-SET,spotify,SPOTIFY
   - RULE-SET,tiktok,TikTok
   - RULE-SET,love,LOVE
-  - RULE-SET,other,OTHER
   - MATCH,DIRECT
