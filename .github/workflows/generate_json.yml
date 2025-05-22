@@ -40,7 +40,7 @@ jobs:
 
         # Получаем файлы из Domains и IPs
         domains_files = get_yaml_files("Domains")
-        ips_files = get_yaml_files("IPs", " IP")
+        ips_files = get_yaml_files("IPs", " (IPs)")
 
         # Комбинируем списки
         all_files = domains_files + ips_files
