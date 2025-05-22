@@ -1,0 +1,62 @@
+name: Generate Clash List JSON
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  generate-list:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: Generate list.json
+      run: |
+        python - <<EOF
+        import os
+        import json
+
+        def get_yaml_files(folder, suffix=""):
+            files = []
+            folder_path = os.path.join("Clash", folder)
+            if not os.path.exists(folder_path):
+                return files
+                
+            for file in os.listdir(folder_path):
+                if file.endswith('.yaml'):
+                    name = os.path.splitext(file)[0] + suffix
+                    raw_url = f"https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/Clash/{folder}/{file}"
+                    files.append({"name": name, "url": raw_url})
+            return files
+
+        # Получаем файлы из Domains и IPs
+        domains_files = get_yaml_files("Domains")
+        ips_files = get_yaml_files("IPs", " IP")
+
+        # Комбинируем списки
+        all_files = domains_files + ips_files
+
+        # Создаем JSON
+        with open('Clash/list.json', 'w', encoding='utf-8') as f:
+            json.dump(all_files, f, indent=2, ensure_ascii=False)
+
+        EOF
+
+    - name: Commit changes
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add Clash/list.json
+        git commit -m "Update list.json with latest YAML files" || echo "No changes to commit"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
