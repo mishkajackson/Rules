@@ -126,6 +126,7 @@ payload:
   - DOMAIN-SUFFIX,torproject.org
   - DOMAIN-SUFFIX,ubnt.com
   - DOMAIN-SUFFIX,voynaplemyon.com
+  - DOMAIN-SUFFIX,webnative.tech
   - DOMAIN-SUFFIX,wetransfer.com
   - DOMAIN-SUFFIX,zerolab.net
   - DOMAIN-SUFFIX,zetalliance.org
