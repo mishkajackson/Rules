@@ -68,6 +68,10 @@
     "url": "https://raw.githubusercontent.com/mishkajackson/Rules/main/Clash/Domains/TikTok.yaml"
   },
   {
+    "name": "Twitch",
+    "url": "https://raw.githubusercontent.com/mishkajackson/Rules/main/Clash/Domains/Twitch.yaml"
+  },
+  {
     "name": "Twitter",
     "url": "https://raw.githubusercontent.com/mishkajackson/Rules/main/Clash/Domains/Twitter.yaml"
   },
