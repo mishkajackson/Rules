@@ -12,6 +12,10 @@
     "url": "https://raw.githubusercontent.com/mishkajackson/Rules/main/Clash/Domains/Check.yaml"
   },
   {
+    "name": "Cloudflare",
+    "url": "https://raw.githubusercontent.com/mishkajackson/Rules/main/Clash/Domains/Cloudflare.yaml"
+  },
+  {
     "name": "Discord",
     "url": "https://raw.githubusercontent.com/mishkajackson/Rules/main/Clash/Domains/Discord.yaml"
   },
