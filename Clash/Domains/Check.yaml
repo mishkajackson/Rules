@@ -1,8 +1,13 @@
 payload:
-  - DOMAIN-SUFFIX,whoer.net
-  - DOMAIN-SUFFIX,myip.com
-  - DOMAIN-SUFFIX,check-host.net
-  - DOMAIN-SUFFIX,ipleak.net
-  - DOMAIN-SUFFIX,browserleaks.com
-  - DOMAIN-SUFFIX,dnsleaktest.com
-  - DOMAIN-SUFFIX,ripe.net
+  - DOMAIN,whoer.net
+  - DOMAIN,myip.com
+  - DOMAIN,check-host.net
+  - DOMAIN,ipleak.net
+  - DOMAIN,browserleaks.com
+  - DOMAIN,dnsleaktest.com
+  - DOMAIN,ripe.net
+  - DOMAIN,ipwhois.app
+  - DOMAIN,ipwho.is
+  - DOMAIN,api.ip.sb
+  - DOMAIN,ipapi.co
+  - DOMAIN,ipinfo.io
