@@ -66,3 +66,4 @@ payload:
   - DOMAIN-SUFFIX,notion.so
   - DOMAIN,api.rc-backup.com
   - DOMAIN,http-inputs-notion.splunkcloud.com
+  - DOMAIN-SUFFIX,patreon.com
