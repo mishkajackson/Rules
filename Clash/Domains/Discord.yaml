@@ -28,4 +28,6 @@ payload:
   - DOMAIN-SUFFIX,discordstatus.com
   - DOMAIN-SUFFIX,hammerandchisel.ssl.zendesk.com
   - DOMAIN-SUFFIX,watchanimeattheoffice.com
+  - DOMAIN-SUFFIX,discordsez.com
+  - DOMAIN-SUFFIX,discord-attachments-uploads-prd.storage.googleapis.com
   - PROCESS-NAME,Discord.exe,PROXY
