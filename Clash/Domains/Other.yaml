@@ -116,6 +116,7 @@ payload:
   - DOMAIN-SUFFIX,soundcloud.com
   - DOMAIN-SUFFIX,stripe.com
   - DOMAIN-SUFFIX,supercell.com
+  - DOMAIN-SUFFIX,tauri.app
   - DOMAIN-SUFFIX,tietokettu.net
   - DOMAIN-SUFFIX,themoviedb.org
   - DOMAIN-SUFFIX,thepiratebay.org
