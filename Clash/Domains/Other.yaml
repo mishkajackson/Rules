@@ -130,6 +130,7 @@ payload:
   - DOMAIN-SUFFIX,wixmp.com
   - DOMAIN-SUFFIX,zerolab.net
   - DOMAIN-SUFFIX,zetalliance.org
+  - DOMAIN-SUFFIX,zendesk.com
   - DOMAIN-SUFFIX,.ua
   - DOMAIN-KEYWORD,rutor
   - DOMAIN-KEYWORD,rutracker
