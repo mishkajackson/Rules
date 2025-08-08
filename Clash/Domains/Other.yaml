@@ -77,7 +77,6 @@ payload:
   - DOMAIN-SUFFIX,docs.google.com
   - DOMAIN-SUFFIX,drive.google.com
   - DOMAIN-SUFFIX,googledrive.com
-  - DOMAIN-SUFFIX,googleusercontent.com
   - DOMAIN-SUFFIX,habr.com
   - DOMAIN-SUFFIX,happ-proxy.com
   - DOMAIN-SUFFIX,hashicorp.com
