@@ -2,6 +2,7 @@ payload:
   - DOMAIN-SUFFIX,cloudflare-ech.com
   - DOMAIN-SUFFIX,4pda.ru
   - DOMAIN-SUFFIX,4pda.to
+  - DOMAIN-SUFFIX,4pda.ws
   - DOMAIN-SUFFIX,abook-club.ru
   - DOMAIN-SUFFIX,adguard.com
   - DOMAIN-SUFFIX,adobe.io
