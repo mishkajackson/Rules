@@ -1,3 +1,18 @@
+name: Build Telegram CIDR lists
+
+on:
+  schedule:
+    # 00:00 UTC ≈ 03:00 по Хельсинки летом (02:00 зимой)
+    - cron: "0 0 * * *"
+  workflow_dispatch: {}  # можно запускать вручную
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Generate lists
         run: |
           mkdir -p scripts Shadowrocket Clash/IPs
@@ -8,13 +23,9 @@
 
           URL = "https://core.telegram.org/resources/cidr.txt"
 
-          try:
-              resp = requests.get(URL, timeout=30)
-              resp.raise_for_status()
-              source = [line.strip() for line in resp.text.splitlines() if line.strip()]
-          except requests.RequestException as e:
-              print(f"Error fetching CIDR list: {e}")
-              exit(1)
+          resp = requests.get(URL, timeout=30)
+          resp.raise_for_status()
+          source = [line.strip() for line in resp.text.splitlines() if line.strip()]
 
           # --- Clash/IPs/Telegram.yaml ---
           yaml_path = Path("Clash/IPs/Telegram.yaml")
@@ -24,7 +35,6 @@
               f.write("payload:\n")
               for cidr in source:
                   f.write(f"  - {cidr}\n")
-          print(f"Generated Clash file: {yaml_path} with {len(source)} CIDR entries")
 
           # --- Shadowrocket/Telegram.list ---
           ipv4_final_order = [
@@ -59,11 +69,6 @@
               for cidr in ipv6_ordered:
                   f.write(f"IP-CIDR6,{cidr},no-resolve\n")
 
-          print(f"Generated Shadowrocket file: {list_path}")
-          print(f"IPv4 entries: {len(ipv4_final_order)}")
-          print(f"IPv6 entries: {len(ipv6_ordered)}")
-          print(f"Shadowrocket file content:\n{list_path.read_text()}")
-
           print("Generated:")
           print(" -", yaml_path)
           print(" -", list_path)
@@ -72,3 +77,16 @@
           python3 -m pip install --upgrade pip
           python3 -m pip install requests
           python3 scripts/build_telegram_lists.py
+
+      - name: Commit and push if changed
+        run: |
+          set -e
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add Clash/IPs/Telegram.yaml Shadowrocket/Telegram.list scripts/build_telegram_lists.py
+            git commit -m "Update Telegram CIDR lists"
+            git push
+          else
+            echo "No changes to commit."
+          fi
