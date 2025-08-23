@@ -1,0 +1,39 @@
+name: Update WhatsApp CIDR Lists
+
+on:
+  workflow_dispatch: # Allows manual trigger
+  schedule:
+    - cron: '0 3 * * *' # Runs daily at 3 AM UTC
+
+jobs:
+  update-cidr-lists:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download WhatsApp CIDR list
+        run: |
+          curl -s https://raw.githubusercontent.com/HybridNetworks/whatsapp-cidr/refs/heads/main/WhatsApp/whatsapp_cidr_ipv4.txt -o cidr.txt
+
+      - name: Create Clash Whatsapp.yaml
+        run: |
+          mkdir -p Clash/IPs
+          echo "payload:" > Clash/IPs/Whatsapp.yaml
+          cat cidr.txt | sed 's/^/  - /' >> Clash/IPs/Whatsapp.yaml
+
+      - name: Create Shadowrocket Whatsapp.list
+        run: |
+          mkdir -p Shadowrocket
+          > Shadowrocket/Whatsapp.list
+          cat cidr.txt | while read -r line; do
+            echo "IP-CIDR,$line,no-resolve" >> Shadowrocket/Whatsapp.list
+          done
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add Clash/IPs/Whatsapp.yaml Shadowrocket/Whatsapp.list
+          git commit -m "Update WhatsApp CIDR lists" || echo "No changes to commit"
+          git push
