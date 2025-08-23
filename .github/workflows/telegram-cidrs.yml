@@ -1,92 +1,47 @@
-name: Build Telegram CIDR lists
+name: Update Telegram CIDR Lists
 
 on:
+  workflow_dispatch: # Allows manual trigger
   schedule:
-    # 00:00 UTC ≈ 03:00 по Хельсинки летом (02:00 зимой)
-    - cron: "0 0 * * *"
-  workflow_dispatch: {}  # можно запускать вручную
+    - cron: '0 3 * * *' # Runs daily at 3 AM UTC
 
 jobs:
-  build:
+  update-cidr-lists:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Generate lists
+      - name: Download Telegram CIDR list
         run: |
-          mkdir -p scripts Shadowrocket Clash/IPs
+          curl -s https://core.telegram.org/resources/cidr.txt -o cidr.txt
 
-          cat > scripts/build_telegram_lists.py << 'PY'
-          import requests
-          from pathlib import Path
-
-          URL = "https://core.telegram.org/resources/cidr.txt"
-
-          resp = requests.get(URL, timeout=30)
-          resp.raise_for_status()
-          source = [line.strip() for line in resp.text.splitlines() if line.strip()]
-
-          # --- Clash/IPs/Telegram.yaml ---
-          yaml_path = Path("Clash/IPs/Telegram.yaml")
-          yaml_path.parent.mkdir(parents=True, exist_ok=True)
-
-          with yaml_path.open("w", encoding="utf-8") as f:
-              f.write("payload:\n")
-              for cidr in source:
-                  f.write(f"  - {cidr}\n")
-
-          # --- Shadowrocket/Telegram.list ---
-          ipv4_final_order = [
-              "109.239.140.0/24",
-              "149.154.160.0/20",
-              "5.28.192.0/18",
-              "91.108.0.0/16",
-          ]
-
-          # Проверяем наличие f23c/f23d
-          have_f23c = any(s.lower().startswith("2001:b28:f23c::/48") for s in source)
-          have_f23d = any(s.lower().startswith("2001:b28:f23d::/48") for s in source)
-
-          ipv6_agg = []
-          if have_f23c and have_f23d:
-              ipv6_agg.append("2001:b28:f23c::/47")
-          else:
-              if have_f23c: ipv6_agg.append("2001:b28:f23c::/48")
-              if have_f23d: ipv6_agg.append("2001:b28:f23d::/48")
-
-          ipv6_ordered = []
-          ipv6_ordered.append("2001:67c:4e8::/48")
-          ipv6_ordered.extend(ipv6_agg)
-          ipv6_ordered.extend(["2001:b28:f23f::/48", "2a0a:f280::/29"])
-
-          list_path = Path("Shadowrocket/Telegram.list")
-          list_path.parent.mkdir(parents=True, exist_ok=True)
-
-          with list_path.open("w", encoding="utf-8") as f:
-              for cidr in ipv4_final_order:
-                  f.write(f"IP-CIDR,{cidr},no-resolve\n")
-              for cidr in ipv6_ordered:
-                  f.write(f"IP-CIDR6,{cidr},no-resolve\n")
-
-          print("Generated:")
-          print(" -", yaml_path)
-          print(" -", list_path)
-          PY
-
-          python3 -m pip install --upgrade pip
-          python3 -m pip install requests
-          python3 scripts/build_telegram_lists.py
-
-      - name: Commit and push if changed
+      - name: Create Clash Telegram.yaml
         run: |
-          set -e
-          if [ -n "$(git status --porcelain)" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add Clash/IPs/Telegram.yaml Shadowrocket/Telegram.list scripts/build_telegram_lists.py
-            git commit -m "Update Telegram CIDR lists"
-            git push
-          else
-            echo "No changes to commit."
-          fi
+          mkdir -p Clash/IPs
+          echo "payload:" > Clash/IPs/Telegram.yaml
+          cat cidr.txt | sed 's/^/  - /' >> Clash/IPs/Telegram.yaml
+
+      - name: Create Shadowrocket Telegram.list
+        run: |
+          mkdir -p Shadowrocket
+          # Initialize empty file
+          > Shadowrocket/Telegram.list
+          
+          # Process IPv4 addresses
+          grep -v ':' cidr.txt | while read -r line; do
+            echo "IP-CIDR,$line,no-resolve" >> Shadowrocket/Telegram.list
+          done
+          
+          # Process IPv6 addresses
+          grep ':' cidr.txt | while read -r line; do
+            echo "IP-CIDR6,$line,no-resolve" >> Shadowrocket/Telegram.list
+          done
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add Clash/IPs/Telegram.yaml Shadowrocket/Telegram.list
+          git commit -m "Update Telegram CIDR lists" || echo "No changes to commit"
+          git push
