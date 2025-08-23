@@ -1,26 +1,3 @@
-IP-CIDR,# ============================================================,no-resolve
-IP-CIDR,#,no-resolve
-IP-CIDR,# whatsapp_cidr_ipv4,no-resolve
-IP-CIDR,#,no-resolve
-IP-CIDR,# ipv4 hash:net ipset,no-resolve
-IP-CIDR,#,no-resolve
-IP-CIDR,# List of the WhatsApp server IP addresses and ranges.,no-resolve
-IP-CIDR,#,no-resolve
-IP-CIDR,# Maintainer      : Meta,no-resolve
-IP-CIDR,# Maintainer URL  : https://about.meta.com/,no-resolve
-IP-CIDR,# List source URL : https://developers.facebook.com/docs/whatsapp/guides/network-requirements/,no-resolve
-IP-CIDR,#,no-resolve
-IP-CIDR,# Category        : servers,no-resolve
-IP-CIDR,# Version         : 1,no-resolve
-IP-CIDR,#,no-resolve
-IP-CIDR,# This File Date  : 2025-08-23 00:47:22,no-resolve
-IP-CIDR,# Update Frequency: 24 hours,no-resolve
-IP-CIDR,# Entries         : 229,no-resolve
-IP-CIDR,#,no-resolve
-IP-CIDR,# (C) 2011-2025 HybridNetworks Ltd. -- All Rights Reserved,no-resolve
-IP-CIDR,#,no-resolve
-IP-CIDR,# ============================================================,no-resolve
-IP-CIDR,#,no-resolve
 IP-CIDR,3.33.221.48/32,no-resolve
 IP-CIDR,3.33.252.61/32,no-resolve
 IP-CIDR,15.197.206.217/32,no-resolve
