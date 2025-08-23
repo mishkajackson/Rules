@@ -20,13 +20,13 @@ jobs:
         run: |
           mkdir -p Clash/IPs
           echo "payload:" > Clash/IPs/Whatsapp.yaml
-          cat cidr.txt | sed 's/^/  - /' >> Clash/IPs/Whatsapp.yaml
+          grep -v '^#' cidr.txt | grep -v '^$' | sed 's/^/  - /' >> Clash/IPs/Whatsapp.yaml
 
       - name: Create Shadowrocket Whatsapp.list
         run: |
           mkdir -p Shadowrocket
           > Shadowrocket/Whatsapp.list
-          cat cidr.txt | while read -r line; do
+          grep -v '^#' cidr.txt | grep -v '^$' | while read -r line; do
             echo "IP-CIDR,$line,no-resolve" >> Shadowrocket/Whatsapp.list
           done
 
