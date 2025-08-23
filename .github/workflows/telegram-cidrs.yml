@@ -2,9 +2,9 @@ name: Build Telegram CIDR lists
 
 on:
   schedule:
-    # 00:00 UTC ≈ 03:00 Europe/Helsinki летом (и 02:00 зимой)
+    # 00:00 UTC ≈ 03:00 по Хельсинки летом (02:00 зимой)
     - cron: "0 0 * * *"
-  workflow_dispatch: {}
+  workflow_dispatch: {}  # можно запускать вручную
 
 jobs:
   build:
@@ -37,7 +37,6 @@ with yaml_path.open("w", encoding="utf-8") as f:
         f.write(f"  - {cidr}\n")
 
 # --- Shadowrocket/Telegram.list ---
-# Канонический список (как в примере)
 ipv4_final_order = [
     "109.239.140.0/24",
     "149.154.160.0/20",
@@ -45,7 +44,7 @@ ipv4_final_order = [
     "91.108.0.0/16",
 ]
 
-# Проверяем наличие /48 f23c и f23d, объединяем в /47
+# Проверяем наличие f23c/f23d
 have_f23c = any(s.lower().startswith("2001:b28:f23c::/48") for s in source)
 have_f23d = any(s.lower().startswith("2001:b28:f23d::/48") for s in source)
 
