@@ -24,6 +24,10 @@
     "url": "https://raw.githubusercontent.com/mishkajackson/Rules/main/Clash/IPs/Discord.yaml"
   },
   {
+    "name": "GitHub",
+    "url": "https://raw.githubusercontent.com/mishkajackson/Rules/main/Clash/Domains/GitHub.yaml"
+  },
+  {
     "name": "Instagram",
     "url": "https://raw.githubusercontent.com/mishkajackson/Rules/main/Clash/Domains/Instagram.yaml"
   },
