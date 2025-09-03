@@ -102,6 +102,7 @@ payload:
   - DOMAIN-SUFFIX,oaiusercontent.com
   - DOMAIN-SUFFIX,on24.com
   - DOMAIN-SUFFIX,onlinesim.io
+  - DOMAIN-SUFFIX,porkbun.com
   - DOMAIN-SUFFIX,paraswap.io
   - DOMAIN-SUFFIX,parsec.app
   - DOMAIN-SUFFIX,paypal.com
