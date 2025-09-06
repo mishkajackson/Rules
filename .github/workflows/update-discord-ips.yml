@@ -1,0 +1,55 @@
+name: Update Discord Voice IPs (Clash YAML)
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "17 3 * * *" # ежедневно в 03:17 UTC
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-discord-ips
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate Clash/IPs/Discord.yaml
+        env:
+          SRC_URL: https://raw.githubusercontent.com/GhostRooter0953/discord-voice-ips/refs/heads/master/voice_domains/discord-voice-ip-list
+        run: |
+          set -euo pipefail
+          mkdir -p Clash/IPs
+
+          # Скачиваем, убираем CR, отбрасываем пустые/комментарии/мусор, оставляем только IPv4,
+          # удаляем дубли, формируем YAML c постфиксом /32
+          curl -fsSL "$SRC_URL" \
+            | tr -d '\r' \
+            | grep -E '^[[:space:]]*[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+[[:space:]]*$' \
+            | sed -E 's/^[[:space:]]+|[[:space:]]+$//g' \
+            | sort -u \
+            | awk 'BEGIN{print "payload:"} {printf "  - %s/32\n",$0}' \
+            > Clash/IPs/Discord.yaml
+
+          echo "Generated file:"
+          head -n 20 Clash/IPs/Discord.yaml || true
+          echo "Total lines (including header):"
+          wc -l Clash/IPs/Discord.yaml
+
+      - name: Commit & push if changed
+        run: |
+          set -euo pipefail
+          if ! git diff --quiet -- Clash/IPs/Discord.yaml; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add Clash/IPs/Discord.yaml
+            git commit -m "chore: update Discord voice IPs for Clash ($(date -u +%Y-%m-%d))"
+            git push
+          else
+            echo "No changes to commit."
+          fi
