@@ -5,9 +5,21 @@ payload:
   - DOMAIN-SUFFIX,googleapis.com
   - DOMAIN-SUFFIX,youtube.com
   - DOMAIN-SUFFIX,ggpht.com
+  - DOMAIN-SUFFIX,gvt1.com
+  - DOMAIN-SUFFIX,gvt2.com
+  - DOMAIN-SUFFIX,video.google.com
+  - DOMAIN-SUFFIX,wide-youtube.l.google.com
+  - DOMAIN-SUFFIX,withyoutube.com
+  - DOMAIN-SUFFIX,youtubeeducation.com
+  - DOMAIN-SUFFIX,youtubeembeddedplayer.googleapis.com
+  - DOMAIN-SUFFIX,youtubefanfest.com
+  - DOMAIN-SUFFIX,youtubegaming.com
   - DOMAIN-SUFFIX,youtubei.googleapis.com
   - DOMAIN-SUFFIX,youtu.be
-  - DOMAIN-SUFFIX,nhacmp3youtube.com
+  - DOMAIN-SUFFIX,youtubego.com
+  - DOMAIN-SUFFIX,youtubekids.com
+  - DOMAIN-SUFFIX,youtubemobilesupport.com
+  - DOMAIN-SUFFIX,yt.be
   - DOMAIN-SUFFIX,googleusercontent.com
   - DOMAIN-SUFFIX,youtubetoken-pa.googleapis.com
   - DOMAIN-SUFFIX,nhacmp3youtube.com
