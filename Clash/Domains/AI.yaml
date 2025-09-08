@@ -67,3 +67,4 @@ payload:
   - DOMAIN,api.rc-backup.com
   - DOMAIN,http-inputs-notion.splunkcloud.com
   - DOMAIN-SUFFIX,patreon.com
+  - DOMAIN-SUFFIX,nanobanana.ai
