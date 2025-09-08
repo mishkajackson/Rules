@@ -68,3 +68,4 @@ payload:
   - DOMAIN,http-inputs-notion.splunkcloud.com
   - DOMAIN-SUFFIX,patreon.com
   - DOMAIN-SUFFIX,nanobanana.ai
+  - DOMAIN-SUFFIX,veo3.ai
