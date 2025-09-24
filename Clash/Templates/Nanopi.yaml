@@ -1,0 +1,345 @@
+mode: rule
+ipv6: false
+log-level: error
+allow-lan: false
+tproxy-port: 7894
+unified-delay: true
+tcp-concurrent: true
+find-process-mode: strict
+external-controller: 0.0.0.0:9090
+external-ui: ./xd
+
+hosts:
+  ntc.party: 130.255.77.28
+
+dns:
+  enable: true
+  listen: 0.0.0.0:7874
+  ipv6: false
+  default-nameserver:
+    - 9.9.9.9
+    - 149.112.112.112
+  nameserver:
+    - https://dns.quad9.net/dns-query
+    - https://dns10.quad9.net/dns-query
+
+keep-alive-idle: 15
+keep-alive-interval: 15
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+  tracing: false
+
+routing-mark: 2
+
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+  skip-domain:
+    - "Mijia Cloud"
+    - '+.lan'
+    - '+.local'
+    - '+.push.apple.com'
+    - '+.apple.com'
+
+proxy-providers:
+  sub:
+    type: http
+    path: ./profiles/proxies/sub.yaml
+    url: 'https://domaib.com/sub'
+    interval: 86400
+    health-check:
+      enable: true
+      url: 'http://www.gstatic.com/generate_204'
+      interval: 300
+
+proxy-groups:
+  - name: ADBLOCK
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/AdWhite.png
+
+  - name: AI
+    type: select
+    include-all: true
+    disable-udp: false
+    proxies:
+      - AUTO
+      - DIRECT
+
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/ChatGPT.png
+  - name: ANIME
+    type: select
+    include-all: true
+    disable-udp: false
+    proxies:
+      - AUTO
+      - DIRECT
+
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rainbow_1.png
+  - name: CHECK
+    type: select
+    include-all: true
+    disable-udp: false
+    proxies:
+      - AUTO
+      - DIRECT
+
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Static.png
+  - name: DISCORD
+    type: select
+    include-all: true
+    disable-udp: false
+    proxies:
+      - AUTO
+      - DIRECT
+
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Discord.png
+  - name: INSTAGRAM
+    type: select
+    include-all: true
+    disable-udp: false
+    proxies:
+      - AUTO
+      - DIRECT
+
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Instagram.png
+  - name: KINOPUB
+    type: select
+    include-all: true
+    disable-udp: false
+    proxies:
+      - AUTO
+      - DIRECT
+
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Paramount.png
+  - name: LOVE
+    type: select
+    include-all: true
+    disable-udp: false
+    proxies:
+      - AUTO
+      - DIRECT
+
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Pornhub.png
+  - name: MOBILE VOICE
+    type: select
+    include-all: true
+    disable-udp: false
+    proxies:
+      - AUTO
+      - DIRECT
+
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/PBS.png
+  - name: OTHER
+    type: select
+    include-all: true
+    disable-udp: false
+    proxies:
+      - AUTO
+      - DIRECT
+
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png
+  - name: RIOT
+    type: select
+    include-all: true
+    disable-udp: false
+    proxies:
+      - DIRECT
+      - AUTO
+
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
+  - name: SPOTIFY
+    type: select
+    include-all: true
+    disable-udp: false
+    proxies:
+      - AUTO
+      - DIRECT
+
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
+  - name: STEAM STORE
+    type: select
+    include-all: true
+    proxies:
+      - DIRECT
+      - AUTO
+
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Steam.png
+  - name: TikTok
+    type: select
+    include-all: true
+    disable-udp: false
+    proxies:
+      - AUTO
+      - DIRECT
+
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok.png
+  - name: TWITCH
+    type: select
+    include-all: true
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitch.png
+    proxies:
+      - DIRECT
+      - AUTO
+
+  - name: TWITTER
+    type: select
+    include-all: true
+    disable-udp: false
+    proxies:
+      - AUTO
+      - DIRECT
+
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/X.png
+  - name: YOUTUBE
+    type: select
+    include-all: true
+    disable-udp: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+    proxies:
+      - AUTO
+      - DIRECT
+
+  - name: AUTO
+    type: url-test
+    include-all: true
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png
+
+rule-providers:
+  AI:
+    behavior: classical
+    type: http
+    url: https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/AI.yaml
+    interval: 86400
+    path: ./ruleset/ai.yaml
+  anime:
+    behavior: classical
+    type: http
+    url: https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Anime.yaml
+    interval: 86400
+    path: ./ruleset/anime.yaml
+  check:
+    behavior: classical
+    type: http
+    url: https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Check.yaml
+    interval: 86400
+    path: ./ruleset/check.yaml
+  discord:
+    behavior: classical
+    type: http
+    url: https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Discord.yaml
+    interval: 86400
+    path: ./ruleset/discord.yaml
+  discord-voice:
+    behavior: ipcidr
+    type: http
+    url: https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/IPs/Discord.yaml
+    interval: 86400
+    path: ./ruleset/discord_voice.yaml
+  instagram:
+    behavior: classical
+    type: http
+    url: https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Instagram.yaml
+    interval: 86400
+    path: ./ruleset/instagram.yaml
+  kinopub:
+    behavior: classical
+    type: http
+    url: https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/KinoPub.yaml
+    interval: 86400
+    path: ./ruleset/kinopub.yaml
+  love:
+    behavior: classical
+    type: http
+    url: https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Love.yaml
+    interval: 86400
+    path: ./ruleset/love.yaml
+  mobile-voice:
+    behavior: classical
+    type: http
+    url: https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Ports/Tg-wa.yaml
+    interval: 86400
+    path: ./ruleset/mobile-voice.yaml
+  oisd:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Oisd.yaml
+    path: ./ruleset/oisd_big.yaml
+    interval: 86400
+  other:
+    behavior: classical
+    type: http
+    url: https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Other.yaml
+    interval: 86400
+    path: ./ruleset/other.yaml
+  riot:
+    behavior: classical
+    type: http
+    url: https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Riot.yaml
+    interval: 86400
+    path: ./ruleset/riot.yaml
+  spotify:
+    behavior: classical
+    type: http
+    url: https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Spotify.yaml
+    interval: 86400
+    path: ./ruleset/spotify.yaml
+  tiktok:
+    behavior: classical
+    type: http
+    url: https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/TikTok.yaml
+    interval: 86400
+    path: ./ruleset/tiktok.yaml
+  twitch:
+    behavior: classical
+    type: http
+    url: https://raw.githubusercontent.com/mishkajackson/Rules/main/Clash/Domains/Twitch.yaml
+    interval: 86400
+    path: ./ruleset/twitch.yaml
+  twitter:
+    behavior: classical
+    type: http
+    url: https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Twitter.yaml
+    interval: 86400
+    path: ./ruleset/twitter.yaml
+  youtube:
+    behavior: classical
+    type: http
+    url: https://raw.githubusercontent.com/mishkajackson/Rules/refs/heads/main/Clash/Domains/Youtube.yaml
+    interval: 86400
+    path: ./ruleset/youtube.yaml
+rules:
+  - RULE-SET,other,OTHER
+  - RULE-SET,AI,AI
+  - RULE-SET,anime,ANIME
+  - RULE-SET,check,CHECK
+  - RULE-SET,discord,DISCORD
+  - RULE-SET,discord-voice,DISCORD
+  - RULE-SET,instagram,INSTAGRAM
+  - RULE-SET,kinopub,KINOPUB
+  - RULE-SET,love,LOVE
+  - RULE-SET,mobile-voice,MOBILE VOICE
+  - RULE-SET,oisd,ADBLOCK
+  - RULE-SET,riot,RIOT
+  - RULE-SET,spotify,SPOTIFY
+  - DOMAIN-SUFFIX,store.steampowered.com,STEAM STORE
+  - RULE-SET,tiktok,TikTok
+  - RULE-SET,twitch,TWITCH
+  - RULE-SET,twitter,TWITTER
+  - RULE-SET,youtube,YOUTUBE
+  - MATCH,DIRECT
