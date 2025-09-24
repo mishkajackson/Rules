@@ -67,7 +67,6 @@ proxy-groups:
       - REJECT
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/AdWhite.png
-
   - name: AI
     type: select
     include-all: true
@@ -75,7 +74,6 @@ proxy-groups:
     proxies:
       - AUTO
       - DIRECT
-
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/ChatGPT.png
   - name: ANIME
     type: select
@@ -84,7 +82,6 @@ proxy-groups:
     proxies:
       - AUTO
       - DIRECT
-
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rainbow_1.png
   - name: CHECK
     type: select
@@ -93,7 +90,6 @@ proxy-groups:
     proxies:
       - AUTO
       - DIRECT
-
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Static.png
   - name: DISCORD
     type: select
@@ -102,7 +98,6 @@ proxy-groups:
     proxies:
       - AUTO
       - DIRECT
-
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Discord.png
   - name: INSTAGRAM
     type: select
@@ -111,7 +106,6 @@ proxy-groups:
     proxies:
       - AUTO
       - DIRECT
-
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Instagram.png
   - name: KINOPUB
     type: select
@@ -120,7 +114,6 @@ proxy-groups:
     proxies:
       - AUTO
       - DIRECT
-
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Paramount.png
   - name: LOVE
     type: select
@@ -129,7 +122,6 @@ proxy-groups:
     proxies:
       - AUTO
       - DIRECT
-
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Pornhub.png
   - name: MOBILE VOICE
     type: select
@@ -138,7 +130,6 @@ proxy-groups:
     proxies:
       - AUTO
       - DIRECT
-
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/PBS.png
   - name: OTHER
     type: select
@@ -147,7 +138,6 @@ proxy-groups:
     proxies:
       - AUTO
       - DIRECT
-
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png
   - name: RIOT
     type: select
@@ -156,7 +146,6 @@ proxy-groups:
     proxies:
       - DIRECT
       - AUTO
-
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
   - name: SPOTIFY
     type: select
@@ -165,7 +154,6 @@ proxy-groups:
     proxies:
       - AUTO
       - DIRECT
-
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
   - name: STEAM STORE
     type: select
@@ -173,7 +161,6 @@ proxy-groups:
     proxies:
       - DIRECT
       - AUTO
-
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Steam.png
   - name: TikTok
     type: select
@@ -182,7 +169,6 @@ proxy-groups:
     proxies:
       - AUTO
       - DIRECT
-
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok.png
   - name: TWITCH
     type: select
@@ -193,7 +179,6 @@ proxy-groups:
     proxies:
       - DIRECT
       - AUTO
-
   - name: TWITTER
     type: select
     include-all: true
@@ -201,7 +186,6 @@ proxy-groups:
     proxies:
       - AUTO
       - DIRECT
-
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/X.png
   - name: YOUTUBE
     type: select
@@ -211,7 +195,6 @@ proxy-groups:
     proxies:
       - AUTO
       - DIRECT
-
   - name: AUTO
     type: url-test
     include-all: true
