@@ -5,7 +5,6 @@ allow-lan: false
 tproxy-port: 7894
 unified-delay: true
 tcp-concurrent: true
-find-process-mode: strict
 external-controller: 0.0.0.0:9090
 external-ui: ./xd
 
