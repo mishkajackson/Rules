@@ -1,0 +1,10 @@
+payload:
+  - DOMAIN-SUFFIX,rockstargames.com
+  - DOMAIN-SUFFIX,ros.rockstargames.com
+  - DOMAIN-SUFFIX,prod.ros.rockstargames.com
+  - DOMAIN-SUFFIX,prod.telemetry.ros.rockstargames.com
+  - DOMAIN-SUFFIX,prod.cloud.rockstargames.com
+  - DOMAIN-SUFFIX,gta5-prod.ros.rockstargames.com
+  - DOMAIN-SUFFIX,gta5-prod.cloud.rockstargames.com
+  - DOMAIN-SUFFIX,static.ros.rockstargames.com
+  - DOMAIN-SUFFIX,patches.rockstargames.com
