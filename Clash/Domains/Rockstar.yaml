@@ -8,3 +8,7 @@ payload:
   - DOMAIN-SUFFIX,gta5-prod.cloud.rockstargames.com
   - DOMAIN-SUFFIX,static.ros.rockstargames.com
   - DOMAIN-SUFFIX,patches.rockstargames.com
+  - DOMAIN-SUFFIX,gamedownloads-rockstargames-com.akamaized.net
+  - DOMAIN-SUFFIX,media-rockstargames-com.akamaized.net
+  - DOMAIN-SUFFIX,rsg.sc
+  - DOMAIN-SUFFIX,videos-rockstargames-com.akamaized.net
