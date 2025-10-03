@@ -56,6 +56,10 @@
     "url": "https://raw.githubusercontent.com/mishkajackson/Rules/main/Clash/Domains/Riot.yaml"
   },
   {
+    "name": "Rockstar",
+    "url": "https://raw.githubusercontent.com/mishkajackson/Rules/main/Clash/Domains/Rockstar.yaml"
+  },
+  {
     "name": "Spotify",
     "url": "https://raw.githubusercontent.com/mishkajackson/Rules/main/Clash/Domains/Spotify.yaml"
   },
