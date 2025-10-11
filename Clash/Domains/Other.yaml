@@ -119,6 +119,7 @@ payload:
   - DOMAIN-SUFFIX,screamingfrog.co.uk
   - DOMAIN-SUFFIX,servarr.com
   - DOMAIN-SUFFIX,soundcloud.com
+  - DOMAIN-SUFFIX,strava.com
   - DOMAIN-SUFFIX,stripe.com
   - DOMAIN-SUFFIX,supercell.com
   - DOMAIN-SUFFIX,tauri.app
@@ -129,6 +130,8 @@ payload:
   - DOMAIN-SUFFIX,torproject.org
   - DOMAIN-SUFFIX,ubnt.com
   - DOMAIN-SUFFIX,voynaplemyon.com
+  - DOMAIN-SUFFIX,wahoo.com
+  - DOMAIN-SUFFIX,wahoofitness.com
   - DOMAIN-SUFFIX,webnative.tech
   - DOMAIN-SUFFIX,wetransfer.com
   - DOMAIN-SUFFIX,wixmp.com
