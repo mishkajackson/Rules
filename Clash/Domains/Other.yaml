@@ -41,6 +41,7 @@ payload:
   - DOMAIN-SUFFIX,contabo.com
   - DOMAIN-SUFFIX,crunchyroll.com
   - DOMAIN-SUFFIX,czx.to
+  - DOMAIN,dashfusion.ru
   - DOMAIN-SUFFIX,d.docs.live.net
   - DOMAIN-SUFFIX,deezer.com
   - DOMAIN-SUFFIX,dell.com
