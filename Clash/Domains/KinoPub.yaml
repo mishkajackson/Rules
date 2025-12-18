@@ -9,3 +9,8 @@ payload:
   - DOMAIN-SUFFIX,staticdn.site
   - DOMAIN-SUFFIX,srvkp.com
   - DOMAIN-SUFFIX,digital-cdn.net
+  - DOMAIN-SUFFIX,nuo.sh
+  - DOMAIN-SUFFIX,dub.sh
+  - DOMAIN-SUFFIX,git.new
+  - DOMAIN-SUFFIX,urlr.me
+  - DOMAIN-SUFFIX,dnskp.cc
