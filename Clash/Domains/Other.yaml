@@ -89,6 +89,7 @@ payload:
   - DOMAIN-SUFFIX,hostinger.com
   - DOMAIN-SUFFIX,intel.com
   - DOMAIN-SUFFIX,intel.ru
+  - DOMAIN-SUFFIX,ionic.io
   - DOMAIN-SUFFIX,itdog.info
   - DOMAIN-SUFFIX,jetbrains.com
   - DOMAIN-SUFFIX,leagueofgraphs.com
