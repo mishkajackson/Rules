@@ -48,6 +48,7 @@ payload:
   - DOMAIN-SUFFIX,generativelanguage.googleapis.com
   - DOMAIN-SUFFIX,alkalimakersuite-pa.clients6.google.com
   - DOMAIN-SUFFIX,claude.ai
+  - DOMAIN-SUFFIX,claude.com
   - DOMAIN-SUFFIX,anthropic.com
   - DOMAIN,servd-anthropic-website.b-cdn.net
   - DOMAIN,cdn.usefathom.com
