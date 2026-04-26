@@ -1,0 +1,7 @@
+name: Google
+category: other
+icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google.png'
+desc: Google
+
+rules: #!insert_top
+    - DOMAIN-SUFFIX,google.com,AI
