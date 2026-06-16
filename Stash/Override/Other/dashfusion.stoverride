@@ -1,7 +1,7 @@
-name: Google
+name: dashFusion
 category: other
-icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google.png'
-desc: Google
+icon: 'https://raw.githubusercontent.com/mishkajackson/DashFusion/refs/heads/main/front/public/apple-touch-icon.png?token=GHSAT0AAAAAAD6IGC646O2AO5TAKBQPE2CA2RRHIBQ'
+desc: DashFusion
 
 rules: #!insert_top
     - DOMAIN-SUFFIX,dashfusion.ru,AI
