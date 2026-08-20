@@ -1,14 +1,13 @@
-name: Comss
+name: Comss.one
 category: DNS
 icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Cloudflare.png
-desc: Comss DNS over TLS
+desc: Comss.one DNS over HTTPS
 dns:
     default-nameserver: #!replace
         - 83.220.169.155
-        - 212.110.29.106
+        - 195.133.25.16
     nameserver: #!replace
-        - tls://83.220.169.155
-        - tls://212.110.29.106
+        - https://dns.comss.one/dns-query
     udp-nameserver: #!replace
         - 83.220.169.155:53
-        - 212.110.29.106:53
+        - 195.133.25.16:53
