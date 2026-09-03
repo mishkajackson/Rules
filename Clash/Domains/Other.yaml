@@ -140,6 +140,7 @@ payload:
   - DOMAIN-SUFFIX,wetransfer.com
   - DOMAIN-SUFFIX,wixmp.com
   - DOMAIN-SUFFIX,vmware.com
+  - DOMAIN-SUFFIX,wikipedia.org
   - DOMAIN-SUFFIX,zerolab.net
   - DOMAIN-SUFFIX,zetalliance.org
   - DOMAIN-SUFFIX,zendesk.com
