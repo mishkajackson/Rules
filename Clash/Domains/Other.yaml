@@ -78,6 +78,7 @@ payload:
   - DOMAIN-SUFFIX,genius.com
   - DOMAIN-SUFFIX,gitlab.io
   - DOMAIN-SUFFIX,gllto.glpals.com
+  - DOMAIN-SUFFIX,google.com
   - DOMAIN-SUFFIX,docs.google.com
   - DOMAIN-SUFFIX,drive.google.com
   - DOMAIN-SUFFIX,googledrive.com
